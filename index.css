@@ -6,6 +6,14 @@ li:hover {
     opacity: 1.0;
   }
 
-  li {
+li {
     opacity: 0.5;
-  }
+}
+
+li.inactivo {
+    opacity: .2;
+}
+
+li.inactivo:hover {
+    opacity: .7;
+}
