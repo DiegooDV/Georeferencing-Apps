@@ -1,0 +1,11 @@
+body{
+    background-image: url("IMG/sunrise.jpg");
+}
+
+li:hover {
+    opacity: 1.0;
+  }
+
+  li {
+    opacity: 0.5;
+  }
