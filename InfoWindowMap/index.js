@@ -15,7 +15,7 @@
                 };
 
                 informacion.setPosition(pos);
-                informacion.setContent("HERE ARE U <br> <img src='../IMG/crown.png' width='20' height='20'>");
+                informacion.setContent("HERE ARE U <br> <img src='https://furtaev.ru/preview/user_on_map_2_small.png'>");
                 informacion.open(map);
                 map.setCenter(pos);
 
