@@ -15,7 +15,7 @@
                 };
 
                 informacion.setPosition(pos);
-                informacion.setContent("HERE ARE U <br> <img src='descarga.png'>");
+                informacion.setContent("HERE ARE U <br> <img src='../IMG/crown.png'>");
                 informacion.open(map);
                 map.setCenter(pos);
 
