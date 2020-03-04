@@ -7,13 +7,13 @@ li:hover {
   }
 
 li {
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 li.inactivo {
-    opacity: .2;
+    opacity: .3;
 }
 
 li.inactivo:hover {
-    opacity: .7;
+    opacity: .6;
 }
