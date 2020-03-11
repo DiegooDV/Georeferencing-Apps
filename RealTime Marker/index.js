@@ -1,6 +1,6 @@
 var coordinates = {
     lat: 0,
-    long: 0
+    lng: 0
 }
 
 var properties = {
@@ -16,8 +16,8 @@ function startMap()
     var icono = {
         url : "https://media1.giphy.com/media/CXG1VWTkjEgHC/source.gif",
         scaledSize: new google.maps.Size(50, 50),
-        origin:  new google.maps.Point(0,0),
-        anchor : new google.maps.Point(0,0)
+        origin:  new google.maps.Point(0, 0),
+        anchor : new google.maps.Point(0, 0)
     };
 
     var marker = new google.maps.Marker({
@@ -47,9 +47,9 @@ function movePosition(marker){
         }
 
 
-        marker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-        map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-        map.setCenter(pos);
+        marker.setPosition(new google.maps.LatLng(pos.lat, pos.lng));
+        map.panTo(new google.maps.LatLng(pos.lat, pos.lng));
+        map.setCenter(position);
     });
 
 
