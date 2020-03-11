@@ -14,7 +14,7 @@ function startMap()
 
     map = new google.maps.Map(document.getElementById("map"), properties);
     var icono = {
-        url : "https://media1.giphy.com/media/CXG1VWTkjEgHC/source.gif",
+        url : "https://lh3.googleusercontent.com/proxy/yjn-vm0-BIBmIhAaEeHmA4cF72PUvkmGVBEDc9j9VRpzvYzucuztygOyjX8j2fgumx1ZIuVsnzELBpFqGo4GTnZp8OMHskErb0JNtQsPEHmH0MHft7iSlhztQcY",
         scaledSize: new google.maps.Size(50, 50),
         origin:  new google.maps.Point(0, 0),
         anchor : new google.maps.Point(0, 0)
