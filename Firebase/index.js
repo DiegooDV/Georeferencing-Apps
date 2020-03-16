@@ -39,6 +39,12 @@ db.collection("productos").onSnapshot(snapshot => {
       let idRemovedValue = document.getElementById(change.doc.id);
       listProducts.removeChild(idRemovedValue);
     }
+    else if(change.type = "modified") {
+      console.log(change.doc.id);
+      let idRemovedValue = document.getElementById(change.doc.id);
+      listProducts.removeChild(idRemovedValue);
+      renderProducts(change.doc);
+    }
 
   });
 
@@ -51,17 +57,23 @@ function renderProducts(doc)
     let name = document.createElement("span");
     let code = document.createElement("span");
     let deleteButton = document.createElement("button");
+    let updateButton = document.createElement("button");
+
 
     li.setAttribute("id", doc.id);
 
     li.classList.add("list-group-item");
     deleteButton.classList.add("btn", "btn-danger", "mr-5");
+    updateButton.classList.add("btn", "btn-warning", "mr-1");
+
     name.classList.add("mr-5");
 
     name.textContent = doc.data().nombre;
     code.textContent = doc.data().codigo;
     deleteButton.textContent = "Delete";
+    updateButton.textContent = "Update";
 
+    li.appendChild(updateButton);
     li.appendChild(deleteButton);
     li.appendChild(name);
     li.appendChild(code);
@@ -74,7 +86,52 @@ function renderProducts(doc)
       db.collection("productos").doc(id).delete();
 
     });
+    
+
+    updateButton.addEventListener("click", (e) => {
+
+      Swal.fire({
+        title: '<strong>Update Product</strong>',
+        icon: 'info',
+        html:
+          '  <input class="form-control" type="text" id="txtNameU" placeholder="Name" /> <br> ' +
+          ' <input class="form-control" type="text" id="txtCodeU" placeholder="Code" /> <br> ',
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText:
+          'Update',
+        cancelButtonText:
+          'Cancel'
+      }).then((result) => {
+        if (result.value) {
+          if(document.getElementById("txtNameU").value.trim() != "" &&
+          document.getElementById("txtCodeU").value.trim() != "")
+          {
+            let id = e.target.parentElement.getAttribute("id");
+            db.collection("productos").doc(id).update({
+              nombre : document.getElementById("txtNameU").value.trim(),
+              codigo : document.getElementById("txtCodeU").value.trim()
+            });
+            Swal.fire(
+              'Updated!',
+              'Register updated',
+              'success'
+            )
+          }
+          else{
+            Swal.fire(
+              'Wrong fields',
+              'Fill all the fields',
+              'warning'
+            )
+          }
+        }
+      });
+});
 }
+
+
 
 function events()
 {
