@@ -54,35 +54,37 @@ db.collection("productos").onSnapshot(snapshot => {
 function renderProducts(doc)
 {
   let li = document.createElement("li");
-    let name = document.createElement("span");
-    let code = document.createElement("span");
+    let name = document.createElement("h3");
+    let code = document.createElement("h6");
     let deleteButton = document.createElement("button");
     let updateButton = document.createElement("button");
+    let br = document.createElement("br");
 
 
     li.setAttribute("id", doc.id);
 
     li.classList.add("list-group-item");
-    deleteButton.classList.add("btn", "btn-danger", "mr-5");
-    updateButton.classList.add("btn", "btn-warning", "mr-1");
-
-    name.classList.add("mr-5");
+    updateButton.classList.add("btn", "btn-sm","btn-warning", "mr-2");
+    deleteButton.classList.add("btn", "btn-sm", "btn-danger");
+  
 
     name.textContent = doc.data().nombre;
     code.textContent = doc.data().codigo;
-    deleteButton.textContent = "Delete";
-    updateButton.textContent = "Update";
-
-    li.appendChild(updateButton);
-    li.appendChild(deleteButton);
+    deleteButton.innerHTML = '<img src="https://image.flaticon.com/icons/svg/1345/1345823.svg" width="20" heigth="30"/>'
+    updateButton.innerHTML = '<img src="https://image.flaticon.com/icons/svg/565/565722.svg" width="20" heigth="30"/>'
+    
+   
     li.appendChild(name);
     li.appendChild(code);
+    li.appendChild(updateButton);
+    li.appendChild(deleteButton);
+    
 
     listProducts.appendChild(li);
 
     deleteButton.addEventListener("click", (e) => {
 
-      let id = e.target.parentElement.getAttribute("id");
+      let id = e.target.parentElement.parentElement.getAttribute("id");
       db.collection("productos").doc(id).delete();
 
     });
@@ -90,12 +92,16 @@ function renderProducts(doc)
 
     updateButton.addEventListener("click", (e) => {
 
+      let id = e.target.parentElement.parentElement.getAttribute("id");
+      
+      let name = e.target.parentElement.parentElement.childNodes[0].innerHTML;
+      let code = e.target.parentElement.parentElement.childNodes[1].innerHTML;
       Swal.fire({
         title: '<strong>Update Product</strong>',
         icon: 'info',
         html:
-          '  <input class="form-control" type="text" id="txtNameU" placeholder="Name" /> <br> ' +
-          ' <input class="form-control" type="text" id="txtCodeU" placeholder="Code" /> <br> ',
+          '  <input class="form-control" type="text" id="txtNameU" placeholder="Name" value="' + name + '" /> <br> ' +
+          ' <input class="form-control" type="text" id="txtCodeU" placeholder="Code" value="' + code + '" /> <br> ',
         showCloseButton: true,
         showCancelButton: true,
         focusConfirm: false,
@@ -108,7 +114,6 @@ function renderProducts(doc)
           if(document.getElementById("txtNameU").value.trim() != "" &&
           document.getElementById("txtCodeU").value.trim() != "")
           {
-            let id = e.target.parentElement.getAttribute("id");
             db.collection("productos").doc(id).update({
               nombre : document.getElementById("txtNameU").value.trim(),
               codigo : document.getElementById("txtCodeU").value.trim()
