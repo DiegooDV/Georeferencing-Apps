@@ -73,6 +73,8 @@ function renderProducts(doc)
     deleteButton.innerHTML = '<img src="https://image.flaticon.com/icons/svg/1345/1345823.svg" width="20" heigth="30"/>'
     updateButton.innerHTML = '<img src="https://image.flaticon.com/icons/svg/565/565722.svg" width="20" heigth="30"/>'
     
+    name.setAttribute("id", "Name" + doc.id);
+    code.setAttribute("id", "Code" + doc.id);
    
     li.appendChild(name);
     li.appendChild(code);
@@ -94,15 +96,19 @@ function renderProducts(doc)
 
       let id = e.target.parentElement.parentElement.getAttribute("id");
       
-      let name = e.target.parentElement.parentElement.childNodes[0].innerHTML;
-      let code = e.target.parentElement.parentElement.childNodes[1].innerHTML;
+      //Bad method, sometimes brings back mixed content
+     // let name = e.target.parentElement.parentElement.childNodes[0].textContent;
+     // let code = e.target.parentElement.parentElement.childNodes[1].textContent;
+
+     let name = document.getElementById("Name" + id).innerText;
+    let code = document.getElementById("Code" + id).innerText;
       Swal.fire({
         title: '<strong>Update Product</strong>',
         icon: 'info',
         html:
           '  <input class="form-control" type="text" id="txtNameU" placeholder="Name" value="' + name + '" /> <br> ' +
           ' <input class="form-control" type="text" id="txtCodeU" placeholder="Code" value="' + code + '" /> <br> ',
-        showCloseButton: true,
+        showCloseButton: false,
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText:
