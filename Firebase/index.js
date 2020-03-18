@@ -21,6 +21,7 @@ const listProducts = document.querySelector('#list');
 const form = document.querySelector('#formProduct');
 
 //add function to listen events
+
 events();
 
 //get changes when database change
@@ -86,7 +87,7 @@ function renderProducts(doc)
 
     deleteButton.addEventListener("click", (e) => {
 
-      let id = e.target.parentElement.parentElement.getAttribute("id");
+      let id = e.currentTarget.parentElement.getAttribute("id");
       db.collection("productos").doc(id).delete();
 
     });
@@ -94,20 +95,21 @@ function renderProducts(doc)
 
     updateButton.addEventListener("click", (e) => {
 
-      let id = e.target.parentElement.parentElement.getAttribute("id");
+      let id = e.currentTarget.parentElement.getAttribute("id");
       
       //Bad method, sometimes brings back mixed content
      // let name = e.target.parentElement.parentElement.childNodes[0].textContent;
      // let code = e.target.parentElement.parentElement.childNodes[1].textContent;
 
-     let name = document.getElementById("Name" + id).innerText;
-    let code = document.getElementById("Code" + id).innerText;
+     let name = document.getElementById("Name" + id);
+    let code = document.getElementById("Code" + id);
+
       Swal.fire({
         title: '<strong>Update Product</strong>',
         icon: 'info',
         html:
-          '  <input class="form-control" type="text" id="txtNameU" placeholder="Name" value="' + name + '" /> <br> ' +
-          ' <input class="form-control" type="text" id="txtCodeU" placeholder="Code" value="' + code + '" /> <br> ',
+          '  <input class="form-control" type="text" id="txtNameU" placeholder="Name" value="' + name.innerText + '" /> <br> ' +
+          ' <input class="form-control" type="text" id="txtCodeU" placeholder="Code" value="' + code.innerText + '" /> <br> ',
         showCloseButton: false,
         showCancelButton: true,
         focusConfirm: false,
@@ -126,7 +128,7 @@ function renderProducts(doc)
             });
             Swal.fire(
               'Updated!',
-              'Register updated',
+              'Element updated',
               'success'
             )
           }
