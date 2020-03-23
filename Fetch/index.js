@@ -7,7 +7,7 @@ fetch('data.json')
 
        data.forEach(element => {
            console.log(element.country);
-           let name = document.createElement("p");
+           let name = document.createElement("div");
            name.textContent = `Country: ${element.country}, cases: ${element.cases}`
            countries.appendChild(name);
        });
