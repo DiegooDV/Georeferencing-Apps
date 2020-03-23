@@ -8,7 +8,7 @@ fetch('https://corona.lmao.ninja/countries')
        data.forEach(element => {
            console.log(element.country);
            let row = document.createElement("div");
-           row.className = "row border bg-light";
+           row.className = "row border border-dark";
            countries.appendChild(row);
 
            let column = document.createElement("div");
