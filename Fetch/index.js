@@ -3,9 +3,17 @@ var countries = document.getElementById("countries");
 fetch('data.json')
 .then(function(response) {
 
-    response.json().then(function(datos) {
+    response.json().then(function(data) {
 
-        console.log(datos);
+       data.forEach(element => {
+           console.log(element.country);
+           let name = document.createElement("p");
+           name.textContent = `Country" ${element.country}, casos: ${element.cases}`
+           countries.appendChild(name);
+       });
+
+       
+        
     });
 
 });
