@@ -16,10 +16,9 @@ function mapStart()
 
     var markersArray = getmarkers();
 
-    console.log(markersArray);
+    
 
-    markersArray.forEach(element => {
-        
+    markersArray.forEach(element => {        
         let marker = new google.maps.Marker({
             map: map,
             position: new google.maps.LatLng(element.latitude, element.longitude),
