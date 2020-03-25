@@ -14,7 +14,8 @@ function mapStart()
    fetch("https://corona.lmao.ninja/countries")
    .then(function(response) {
     response.json.then(function(data){
-        console.log(data[0]);
+        console.log(data);
+        console.log('hola');
     })
 
    })
