@@ -27,11 +27,13 @@ function mapStart()
                 anchor : new google.maps.Point(0, 0)
             };
 
-            var info = `<img class="responsiveImg" src="${element.countryInfo.flag}">
+            var info = `<div class="gm-style-iw">
+              <img class="responsiveImg" src="${element.countryInfo.flag}">
                <br><Strong>Cases:</Strong> ${element.cases} 
                <br><Strong>Deaths:</Strong> <span class="text-danger">${element.deaths}</span>
                <br><Strong>Today cases:</Strong> ${element.todayCases}
-               <br><Strong>Today deaths:</Strong> <span class="text-danger">${element.todayDeaths}</span>`
+               <br><Strong>Today deaths:</Strong> <span class="text-danger">${element.todayDeaths}</span>
+               </div>`
 
             let marker = new google.maps.Marker({
                 map: map,
