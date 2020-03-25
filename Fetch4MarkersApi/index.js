@@ -21,7 +21,7 @@ function mapStart()
 
                 let marker = new google.maps.Marker({
                     map: map,
-                    position: new google.maps.LatLng(element.lat, element.long),
+                    position: new google.maps.LatLng(element.countryInfo.lat, element.countryInfo.long),
                     title: element.country
                 });
            
