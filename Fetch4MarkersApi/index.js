@@ -33,8 +33,12 @@ function mapStart()
                 marker.title = "United States";
                 marker.position =  new google.maps.LatLng(37.09024, -95.712891);
 
-               info = `<img style="width:5rem: height: 2.5rem;"
-               src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png">`
+               info = `<div class="text-center"><img class="responsiveImg"
+               src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png">
+               </div> <br><Strong>Cases:</Strong> ${element.cases} 
+               <br><Strong>Deaths:</Strong> <span class="text-danger">${element.deaths}</span>
+               <br><Strong>Today cases:</Strong> ${element.todayCases}
+               <br><Strong>Today deaths:</Strong> <span class="text-danger">${element.todayDeaths}</span>`
             }
 
          
