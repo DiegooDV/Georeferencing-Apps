@@ -28,6 +28,7 @@ function mapStart()
             };
 
             var info = `<div class="gm-style-iw">
+            <h6 class="text-center">${element.country}</h6>
               <img class="responsiveImg" src="${element.countryInfo.flag}">
                <br><br><Strong>Cases:</Strong> ${element.cases} 
                <br><Strong>Deaths:</Strong> <span class="text-danger">${element.deaths}</span>
@@ -48,6 +49,7 @@ function mapStart()
                 marker.position =  new google.maps.LatLng(37.09024, -95.712891);
 
                info = `<div class="gm-style-iw">
+               <h6 class="text-center">United States</h6>
                <img class="responsiveImg"
                src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png">
                <br><br><Strong>Cases:</Strong> ${element.cases} 
