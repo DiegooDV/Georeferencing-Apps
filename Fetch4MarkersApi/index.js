@@ -29,7 +29,7 @@ function mapStart()
 
             var info = `<div class="gm-style-iw">
               <img class="responsiveImg" src="${element.countryInfo.flag}">
-               <br><Strong>Cases:</Strong> ${element.cases} 
+               <br><br><Strong>Cases:</Strong> ${element.cases} 
                <br><Strong>Deaths:</Strong> <span class="text-danger">${element.deaths}</span>
                <br><Strong>Today cases:</Strong> ${element.todayCases}
                <br><Strong>Today deaths:</Strong> <span class="text-danger">${element.todayDeaths}</span>
@@ -50,7 +50,7 @@ function mapStart()
                info = `<div class="gm-style-iw">
                <img class="responsiveImg"
                src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png">
-               <br><Strong>Cases:</Strong> ${element.cases} 
+               <br><br><Strong>Cases:</Strong> ${element.cases} 
                <br><Strong>Deaths:</Strong> <span class="text-danger">${element.deaths}</span>
                <br><Strong>Today cases:</Strong> ${element.todayCases}
                <br><Strong>Today deaths:</Strong> <span class="text-danger">${element.todayDeaths}</span>
