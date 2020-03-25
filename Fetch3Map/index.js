@@ -1,4 +1,3 @@
-
 var coordinates = {
     lat: 0,
     lng: 0
