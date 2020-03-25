@@ -16,8 +16,9 @@ function mapStart()
    .then(function(response) {
     response.json().then(function(data){
 
-
+        console.log(data[0]);
         data.forEach(element => {
+
                 let marker = new google.maps.Marker({
                     map: map,
                     position: new google.maps.LatLng(element.lat, element.long),
@@ -26,7 +27,7 @@ function mapStart()
            
         });
        
-    })
+    });
 
    })
    .catch(function(error) {
