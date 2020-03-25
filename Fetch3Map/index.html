@@ -9,9 +9,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
+<style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        height: 100%;
+      }
+</style>
+
 </head>
-
-
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <a class="navbar-brand" href="https://github.com/diegoodv">
@@ -35,7 +45,7 @@
                     <a class="nav-link" href="../Fetch3Map/index.html">App 3</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Fetch2B/index.html">App 4</a>
+                    <a class="nav-link" href="../Fetch4MarkersApi/index.html">App 4</a>
                 </li>
             </ul>
             <span class="navbar-text">
@@ -45,9 +55,10 @@
         </div>
     </nav>
 
-    <div style="height:100%; width:100%;">
+
         <div id="map"></div>
-   </div>
+   
+   
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
