@@ -35,7 +35,7 @@ function mapStart()
             if(element.country.toLowerCase() == "usa" )
             {
                 marker.title = "United States";
-                marker.position =  new google.maps.LatLng(37.09024, -95.712891),
+                marker.position =  new google.maps.LatLng(37.09024, -95.712891);
             }
 
 
