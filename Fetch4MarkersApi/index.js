@@ -16,15 +16,27 @@ function mapStart()
    .then(function(response) {
     response.json().then(function(data){
 
+      
         console.log(data[0]);
         data.forEach(element => {
+
+            var info = `<img src="${datacountryInfo.flag}">`
+
+            var infowindow = new google.maps.InfoWindow({
+                content: info
+            })
 
                 let marker = new google.maps.Marker({
                     map: map,
                     position: new google.maps.LatLng(element.countryInfo.lat, element.countryInfo.long),
                     title: element.country
                 });
+
+                marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                });
            
+
         });
        
     });
