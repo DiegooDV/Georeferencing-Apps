@@ -26,22 +26,18 @@ function mapStart()
                 content: info
             })
 
+            let marker = new google.maps.Marker({
+                map: map,
+                position: new google.maps.LatLng(element.countryInfo.lat, element.countryInfo.long),
+                title: element.country
+            });
+
             if(element.country.toLowerCase() == "usa" )
             {
-                let marker = new google.maps.Marker({
-                    map: map,
-                    position: new google.maps.LatLng(37.09024, -95.712891),
-                    title: 'United States'
-                });
+                marker.title = "United States";
+                marker.position =  new google.maps.LatLng(37.09024, -95.712891),
             }
-            else{
 
-                let marker = new google.maps.Marker({
-                    map: map,
-                    position: new google.maps.LatLng(element.countryInfo.lat, element.countryInfo.long),
-                    title: element.country
-                });
-            }
 
                 marker.addListener('click', function() {
                   infowindow.open(map, marker);
