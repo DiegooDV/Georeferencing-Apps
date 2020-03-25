@@ -22,7 +22,7 @@ function mapStart()
 
             var icon = {
                 url : "../Icons/corona.png",
-                scaledSize: new google.maps.Size(70, 70),
+                scaledSize: new google.maps.Size(30, 30),
                 origin:  new google.maps.Point(0, 0),
                 anchor : new google.maps.Point(0, 0)
             };
