@@ -9,27 +9,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
-<style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
-      #map {
-        height: 100%;
-      }
+        #map_canvas {
+            height: 100%;
+        }
 
-      .responsiveImg {
-        width:20%;
-        height: 8%;
-    }
-    .gm-style-iw {
-width: 150px;
-}
-</style>
+        .responsiveImg {
+            width: 20%;
+            height: 8%;
+        }
+
+        .gm-style-iw {
+            width: 150px;
+        }
+    </style>
 
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <a class="navbar-brand" href="https://github.com/diegoodv">
@@ -64,9 +67,44 @@ width: 150px;
     </nav>
 
 
-        <div id="map"></div>
-   
-   
+    <div class="p-1 bg-secondary row m-0 text-center">
+  
+        <h6 class="text-light col-12">Cases range</h6>
+        <div class="col-6">
+            <button style="background-color: #ffffff; width: 25px; height: 25px;"></button>
+            <span class="text-light">0</span>
+            <br>
+        </div>
+
+
+        <div class="col-6">
+            <button style="background-color: #facfcf; width: 25px; height: 25px;"></button>
+            <span class="text-light">1 - 1000 </span>
+            <br>
+        </div>
+
+
+        <div class="col-6">
+            <button style="background-color: #ff6e6e; width: 25px; height: 25px;"></button>
+            <span class="text-light">1001 - 10,000 </span>
+            <br>
+        </div>
+
+
+        <div class="col-6">
+            <button style="background-color: #ff0a0a; width: 25px; height: 25px;"></button>
+            <span class="text-light">10,001 + </span>
+            <br>
+        </div>
+
+
+    </div>
+    <div id="map_canvas">
+
+
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -76,8 +114,10 @@ width: 150px;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="index.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=mapStart" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=start"
+        async defer></script>
 
 </body>
 
