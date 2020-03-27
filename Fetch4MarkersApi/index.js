@@ -101,6 +101,7 @@ function loadBoundariesFromGeoJson(geo_json_url) {
 
         countriesList = data;
 
+        var infowindow = new google.maps.InfoWindow();
         data.forEach(element => {
           var icon = {
             url: "../Icons/corona.png",
@@ -112,10 +113,10 @@ function loadBoundariesFromGeoJson(geo_json_url) {
           var info = `<div class="gm-style-iw">
             <h6>${element.country}</h6>
               <img class="responsiveImg" src="${element.countryInfo.flag}">
-               <br><br><Strong>Cases:</Strong> ${element.cases} 
-               <br><Strong>Deaths:</Strong> <span class="text-danger">${element.deaths}</span>
-               <br><Strong>Today cases:</Strong> ${element.todayCases}
-               <br><Strong>Today deaths:</Strong> <span class="text-danger">${element.todayDeaths}</span>
+              <br><br><Strong>Cases:</Strong> ${new Intl.NumberFormat().format(element.cases)} 
+               <br><Strong>Deaths:</Strong> <span class="text-danger">${new Intl.NumberFormat().format(element.deaths)}</span>
+               <br><Strong>Today cases:</Strong> ${new Intl.NumberFormat().format(element.todayCases)}
+               <br><Strong>Today deaths:</Strong> <span class="text-danger">${new Intl.NumberFormat().format(element.todayDeaths)}</span>
                </div>`;
 
           
@@ -137,18 +138,17 @@ function loadBoundariesFromGeoJson(geo_json_url) {
                <h6>United States</h6>
                <img class="responsiveImg"
                src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png">
-               <br><br><Strong>Cases:</Strong> ${element.cases} 
-               <br><Strong>Deaths:</Strong> <span class="text-danger">${element.deaths}</span>
-               <br><Strong>Today cases:</Strong> ${element.todayCases}
-               <br><Strong>Today deaths:</Strong> <span class="text-danger">${element.todayDeaths}</span>
+               <br><br><Strong>Cases:</Strong> ${new Intl.NumberFormat().format(element.cases)} 
+               <br><Strong>Deaths:</Strong> <span class="text-danger">${new Intl.NumberFormat().format(element.deaths)}</span>
+               <br><Strong>Today cases:</Strong> ${new Intl.NumberFormat().format(element.todayCases)}
+               <br><Strong>Today deaths:</Strong> <span class="text-danger">${new Intl.NumberFormat().format(element.todayDeaths)}</span>
                </div>`;
           }
 
-          var infowindow = new google.maps.InfoWindow({
-            content: info
-          });
+          
 
           marker.addListener("click", function() {
+            infowindow.setContent(info);
             infowindow.open(map, marker);
           });
         });
