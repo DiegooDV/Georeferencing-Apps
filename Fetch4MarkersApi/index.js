@@ -1,1 +1,247 @@
-var _0x5285=['message','\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br><Strong>Deaths:</Strong>\x20<span\x20class=\x22text-danger\x22>','NAME','#ff0a0a','toLowerCase','map_canvas','title','setStyle','todayCases','toUpperCase','mouseout','#facfcf','open','<div\x20class=\x22gm-style-iw\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h6>','https://raw.githubusercontent.com/matej-pavla/Google-Maps-Examples/master/BoundariesExample/geojsons/world.countries.geo.json','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br><Strong>Today\x20cases:</Strong>\x20','United\x20States','json','feature','overrideStyle','sort','countryInfo','properties','includes','catch','South\x20Korea','InfoWindow','boundary_id','#ffffff','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br><Strong>Today\x20deaths:</Strong>\x20<span\x20class=\x22text-danger\x22>','addListener','FeatureCollection','getElementById','Guinea-Bissau','Data','length','features','#ff6e6e','cases','https://corona.lmao.ninja/countries','name','lat','Point','mouseover','then','country','forEach','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','../Icons/corona.png','getFeatureById','log','Marker','LatLng','Laos','white','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br><br><Strong>Cases:</Strong>\x20','United\x20Republic\x20of\x20Tanzania','long','position','#000000','deaths','type','Usa','todayDeaths','maps','Czechia','Bosnia','</h6>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20class=\x22responsiveImg\x22\x20src=\x22'];(function(_0x362470,_0x52857b){var _0x28ece1=function(_0x4f3841){while(--_0x4f3841){_0x362470['push'](_0x362470['shift']());}};_0x28ece1(++_0x52857b);}(_0x5285,0x147));var _0x28ec=function(_0x362470,_0x52857b){_0x362470=_0x362470-0x0;var _0x28ece1=_0x5285[_0x362470];return _0x28ece1;};var map=null;var my_boundaries=[];var data_layer;var countriesList={};var coordinates={'lat':0x0,'lng':0x0};function initializeDataLayer(){if(data_layer){data_layer['forEach'](function(_0x35e5ed){data_layer['remove'](_0x35e5ed);});data_layer=null;}data_layer=new google[(_0x28ec('0x9'))][(_0x28ec('0x2f'))]({'map':map});data_layer[_0x28ec('0x14')]({'fillColor':_0x28ec('0x43'),'strokeWeight':0x1,'fillOpacity':0.1});data_layer['addListener'](_0x28ec('0x38'),function(_0x4d1a85){data_layer[_0x28ec('0x20')](_0x4d1a85[_0x28ec('0x1f')],{'strokeWeight':0x3,'strokeColor':'#ff0000'});});data_layer[_0x28ec('0x2b')](_0x28ec('0x17'),function(_0x4791e8){data_layer[_0x28ec('0x20')](_0x4791e8[_0x28ec('0x1f')],{'strokeWeight':0x1,'strokeColor':''});});}function loadBoundariesFromGeoJson(_0x41f2cf){initializeDataLayer();$['getJSON'](_0x41f2cf,function(_0x5605ae){if(_0x5605ae[_0x28ec('0x6')]==_0x28ec('0x2c')){if(_0x5605ae[_0x28ec('0x31')]){for(var _0x5840c7=0x0;_0x5840c7<_0x5605ae[_0x28ec('0x31')][_0x28ec('0x30')];_0x5840c7++){var _0x5704d7=_0x5840c7+0x1;var _0x1263c5={};if(!_0x5605ae[_0x28ec('0x31')][_0x5840c7]['properties'])_0x5605ae[_0x28ec('0x31')][_0x5840c7][_0x28ec('0x23')]={};_0x5605ae[_0x28ec('0x31')][_0x5840c7]['properties'][_0x28ec('0x28')]=_0x5704d7;data_layer['addGeoJson'](_0x5605ae[_0x28ec('0x31')][_0x5840c7],{'idPropertyName':_0x28ec('0x28')});_0x1263c5[_0x28ec('0x1f')]=data_layer[_0x28ec('0x3e')](_0x5704d7);if(_0x5605ae[_0x28ec('0x31')][_0x5840c7][_0x28ec('0x23')]['name'])_0x1263c5[_0x28ec('0x35')]=_0x5605ae[_0x28ec('0x31')][_0x5840c7][_0x28ec('0x23')][_0x28ec('0x35')];if(_0x5605ae[_0x28ec('0x31')][_0x5840c7]['properties'][_0x28ec('0xf')])_0x1263c5['name']=_0x5605ae['features'][_0x5840c7][_0x28ec('0x23')][_0x28ec('0xf')];my_boundaries[_0x5704d7]=_0x1263c5;}}my_boundaries['sort'](function(_0x3ce0eb,_0x4518c0){var _0x5eb690=_0x3ce0eb[_0x28ec('0x35')][_0x28ec('0x16')]();var _0x17dfb4=_0x4518c0[_0x28ec('0x35')]['toUpperCase']();return _0x5eb690<_0x17dfb4?-0x1:_0x5eb690>_0x17dfb4?0x1:0x0;});}});}function mapStart(){fetch(_0x28ec('0x34'))['then'](function(_0xa65278){_0xa65278[_0x28ec('0x1e')]()[_0x28ec('0x39')](function(_0x335755){_0x335755[_0x28ec('0x21')](function(_0x574bd6,_0x19cbe5){var _0x33cab0=_0x574bd6[_0x28ec('0x3a')][_0x28ec('0x16')]();var _0x47bb34=_0x19cbe5[_0x28ec('0x3a')][_0x28ec('0x16')]();return _0x33cab0<_0x47bb34?-0x1:_0x33cab0>_0x47bb34?0x1:0x0;});_0x335755[0xc4][_0x28ec('0x22')][_0x28ec('0x36')]=14.058324;_0x335755[0xc4][_0x28ec('0x22')]['long']=108.277199;countriesList=_0x335755;_0x335755[_0x28ec('0x3b')](_0x5424e5=>{var _0x58c852={'url':_0x28ec('0x3d'),'scaledSize':new google['maps']['Size'](0x1e,0x1e),'origin':new google[(_0x28ec('0x9'))][(_0x28ec('0x37'))](0x0,0x0),'anchor':new google[(_0x28ec('0x9'))][(_0x28ec('0x37'))](0x0,0x0)};var _0x2428c5=_0x28ec('0x1a')+_0x5424e5[_0x28ec('0x3a')]+_0x28ec('0xc')+_0x5424e5['countryInfo']['flag']+_0x28ec('0x0')+_0x5424e5['cases']+_0x28ec('0xe')+_0x5424e5[_0x28ec('0x5')]+_0x28ec('0x1c')+_0x5424e5[_0x28ec('0x15')]+_0x28ec('0x2a')+_0x5424e5[_0x28ec('0x8')]+_0x28ec('0x3c');let _0x3ce285=new google[(_0x28ec('0x9'))][(_0x28ec('0x40'))]({'map':map,'position':new google[(_0x28ec('0x9'))][(_0x28ec('0x41'))](_0x5424e5[_0x28ec('0x22')][_0x28ec('0x36')],_0x5424e5['countryInfo'][_0x28ec('0x2')]),'title':_0x5424e5[_0x28ec('0x3a')],'icon':_0x58c852});if(_0x5424e5[_0x28ec('0x3a')][_0x28ec('0x11')]()=='usa'){_0x3ce285[_0x28ec('0x13')]=_0x28ec('0x1d');_0x3ce285[_0x28ec('0x3')]=new google[(_0x28ec('0x9'))][(_0x28ec('0x41'))](37.09024,-95.712891);_0x2428c5='<div\x20class=\x22gm-style-iw\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h6>United\x20States</h6>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20class=\x22responsiveImg\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20src=\x22https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<br><br><Strong>Cases:</Strong>\x20'+_0x5424e5[_0x28ec('0x33')]+_0x28ec('0xe')+_0x5424e5[_0x28ec('0x5')]+_0x28ec('0x1c')+_0x5424e5[_0x28ec('0x15')]+_0x28ec('0x2a')+_0x5424e5['todayDeaths']+_0x28ec('0x3c');}var _0x3d3ed6=new google['maps'][(_0x28ec('0x27'))]({'content':_0x2428c5});_0x3ce285['addListener']('click',function(){_0x3d3ed6[_0x28ec('0x19')](map,_0x3ce285);});});colorCountries();});})[_0x28ec('0x25')](function(_0x2bcf19){console[_0x28ec('0x3f')](_0x2bcf19[_0x28ec('0xd')]);});}function start(){var _0x5cf455={'zoom':0x2,'center':coordinates};map=new google[(_0x28ec('0x9'))]['Map'](document[_0x28ec('0x2d')](_0x28ec('0x12')),_0x5cf455);loadBoundariesFromGeoJson(_0x28ec('0x1b'));mapStart();}function colorCountries(){countriesList[0x2a][_0x28ec('0x3a')]='Democratic\x20Republic\x20of\x20the\x20Congo';countriesList[0x27]['country']='Ivory\x20Coast';countriesList[0xc4]['country']='Vietnam';countriesList[0x66]['country']=_0x28ec('0x42');countriesList[0x9a][_0x28ec('0x3a')]=_0x28ec('0x26');countriesList[0xb4][_0x28ec('0x3a')]=_0x28ec('0x1');my_boundaries[0xa9][_0x28ec('0x35')]=_0x28ec('0x7');my_boundaries[0x83]['name']='Serbia';my_boundaries[0x84][_0x28ec('0x35')]='Congo';my_boundaries[0x41][_0x28ec('0x35')]=_0x28ec('0x2e');my_boundaries[0xa7][_0x28ec('0x35')]='UK';my_boundaries[0x12][_0x28ec('0x35')]=_0x28ec('0xb');my_boundaries[0x25][_0x28ec('0x35')]=_0x28ec('0xa');my_boundaries[0xaf][_0x28ec('0x35')]='Palestinian\x20Territory,\x20Occupied';my_boundaries[0xa6][_0x28ec('0x35')]='UAE';for(let _0x4fd778=0x0;_0x4fd778<countriesList[_0x28ec('0x30')];_0x4fd778++){for(let _0x59fe1c=0x0;_0x59fe1c<0xb4;_0x59fe1c++){if(my_boundaries[_0x59fe1c][_0x28ec('0x35')]!=null){if(countriesList[_0x4fd778][_0x28ec('0x3a')][_0x28ec('0x11')]()==my_boundaries[_0x59fe1c][_0x28ec('0x35')]['toLowerCase']()||countriesList[_0x4fd778][_0x28ec('0x3a')][_0x28ec('0x11')]()['includes'](my_boundaries[_0x59fe1c][_0x28ec('0x35')][_0x28ec('0x11')]()||my_boundaries[_0x59fe1c][_0x28ec('0x35')]['toLowerCase']()[_0x28ec('0x24')](countriesList[_0x4fd778][_0x28ec('0x3a')][_0x28ec('0x11')]()))){let _0x24d15e=countriesList[_0x4fd778][_0x28ec('0x33')];let _0x75d581=_0x28ec('0x29');if(_0x24d15e>0x0&&_0x24d15e<=0x3e8){_0x75d581=_0x28ec('0x18');}else if(_0x24d15e>0x3e8&&_0x24d15e<=0x2710){_0x75d581=_0x28ec('0x32');}else if(_0x24d15e>0x2710){_0x75d581=_0x28ec('0x10');}else{_0x75d581=_0x28ec('0x4');}data_layer[_0x28ec('0x20')](my_boundaries[_0x59fe1c][_0x28ec('0x1f')],{'fillColor':_0x75d581,'fillOpacity':0.8});}}}}}
+var map = null;
+var my_boundaries = [];
+var data_layer;
+var countriesList = {};
+
+var coordinates = {
+  lat: 0,
+  lng: 0
+};
+
+function initializeDataLayer() {
+  if (data_layer) {
+    data_layer.forEach(function(feature) {
+      data_layer.remove(feature);
+    });
+    data_layer = null;
+  }
+  data_layer = new google.maps.Data({ map: map }); //initialize data layer which contains the boundaries. It's possible to have multiple data layers on one map
+  data_layer.setStyle({
+    //using set style we can set styles for all boundaries at once
+    fillColor: "white",
+    strokeWeight: 1,
+    fillOpacity: 0.1
+  });
+
+  /*	data_layer.addListener('click', function(e) { //we can listen for a boundary click and identify boundary based on e.feature.getProperty('boundary_id'); we set when adding boundary to data layer
+  		var boundary_id = e.feature.getProperty('boundary_id');
+  		var boundary_name = "NOT SET";
+  		if(boundary_id && my_boundaries[boundary_id] && my_boundaries[boundary_id].name) boundary_name = my_boundaries[boundary_id].name;
+  		if(info_window){
+  			info_window.setMap(null);
+  			info_window = null;
+  		}
+  		info_window = new google.maps.InfoWindow({
+  			content: '<div>You have clicked a boundary: <span style="color:red;">' + boundary_name + '</span></div>',
+  			size: new google.maps.Size(150,50),
+  			position: e.latLng, map: map
+  		});
+  	});
+	*/
+  data_layer.addListener("mouseover", function(e) {
+    data_layer.overrideStyle(e.feature, {
+      strokeWeight: 3,
+      strokeColor: "#ff0000"
+    });
+  });
+
+  data_layer.addListener("mouseout", function(e) {
+    data_layer.overrideStyle(e.feature, {
+      strokeWeight: 1,
+      strokeColor: ""
+    });
+  });
+}
+
+function loadBoundariesFromGeoJson(geo_json_url) {
+  initializeDataLayer();
+  $.getJSON(geo_json_url, function(data) {
+    if (data.type == "FeatureCollection") {
+      //we have a collection of boundaries in geojson format
+      if (data.features) {
+        for (var i = 0; i < data.features.length; i++) {
+          var boundary_id = i + 1;
+          var new_boundary = {};
+          if (!data.features[i].properties) data.features[i].properties = {};
+          data.features[i].properties.boundary_id = boundary_id; //we will use this id to identify boundary later when clicking on it
+          data_layer.addGeoJson(data.features[i], {
+            idPropertyName: "boundary_id"
+          });
+          new_boundary.feature = data_layer.getFeatureById(boundary_id);
+          if (data.features[i].properties.name)
+            new_boundary.name = data.features[i].properties.name;
+          if (data.features[i].properties.NAME)
+            new_boundary.name = data.features[i].properties.NAME;
+          my_boundaries[boundary_id] = new_boundary;
+        }
+      }
+
+      my_boundaries.sort(function(a, b) {
+        var textA = a.name.toUpperCase();
+        var textB = b.name.toUpperCase();
+        return textA < textB ? -1 : textA > textB ? 1 : 0;
+      });
+
+    }
+  });
+}
+
+ function mapStart() {
+  fetch("https://corona.lmao.ninja/countries")
+    .then(function(response) {
+      response.json().then(function(data) {
+
+        data.sort(function(a, b) {
+          var textA = a.country.toUpperCase();
+          var textB = b.country.toUpperCase();
+          return textA < textB ? -1 : textA > textB ? 1 : 0;
+        });
+
+        countriesList = data;
+
+        data.forEach(element => {
+          var icon = {
+            url: "../Icons/corona.png",
+            scaledSize: new google.maps.Size(30, 30),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(0, 0)
+          };
+
+          var info = `<div class="gm-style-iw">
+            <h6>${element.country}</h6>
+              <img class="responsiveImg" src="${element.countryInfo.flag}">
+               <br><br><Strong>Cases:</Strong> ${element.cases} 
+               <br><Strong>Deaths:</Strong> <span class="text-danger">${element.deaths}</span>
+               <br><Strong>Today cases:</Strong> ${element.todayCases}
+               <br><Strong>Today deaths:</Strong> <span class="text-danger">${element.todayDeaths}</span>
+               </div>`;
+
+          
+          let marker = new google.maps.Marker({
+            map: map,
+            position: new google.maps.LatLng(
+              element.countryInfo.lat,
+              element.countryInfo.long
+            ),
+            title: element.country,
+            icon: icon
+          });
+
+          if (element.country.toLowerCase() == "usa") {
+            marker.title = "United States";
+            marker.position = new google.maps.LatLng(37.09024, -95.712891);
+
+            info = `<div class="gm-style-iw">
+               <h6>United States</h6>
+               <img class="responsiveImg"
+               src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png">
+               <br><br><Strong>Cases:</Strong> ${element.cases} 
+               <br><Strong>Deaths:</Strong> <span class="text-danger">${element.deaths}</span>
+               <br><Strong>Today cases:</Strong> ${element.todayCases}
+               <br><Strong>Today deaths:</Strong> <span class="text-danger">${element.todayDeaths}</span>
+               </div>`;
+          }
+
+          var infowindow = new google.maps.InfoWindow({
+            content: info
+          });
+
+          marker.addListener("click", function() {
+            infowindow.open(map, marker);
+          });
+        });
+
+        colorCountries();
+      });
+      
+    })
+    .catch(function(error) {
+      console.log(error.message);
+    });
+    
+    
+
+}
+
+ function start() {
+
+  var myOptions = {
+    zoom: 2,
+    center: coordinates
+  };
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+  loadBoundariesFromGeoJson(
+    "https://raw.githubusercontent.com/matej-pavla/Google-Maps-Examples/master/BoundariesExample/geojsons/world.countries.geo.json"
+  );
+
+  mapStart();
+
+}
+
+function colorCountries()
+{
+   // console.log(my_boundaries[1].name); //181
+   // console.log(countriesList.length);//199
+
+   //Modyfy wrong names
+
+ my_boundaries[168].name = "Tanzania,";
+ my_boundaries[145].name = "S. Korea";
+ my_boundaries[87].name = "Lao";
+ my_boundaries[78].name = "Coast D";
+ my_boundaries[38].name = "Congo,";
+  my_boundaries[169].name = "Usa";
+  my_boundaries[131].name = "Serbia";
+ my_boundaries[132].name = "Congo";
+ my_boundaries[65].name = "Guinea-Bissau";
+ my_boundaries[167].name = "UK";
+  my_boundaries[18].name = "Bosnia";
+  my_boundaries[37].name = "Czechia";
+ my_boundaries[175].name = "Palestinian Territory, Occupied";
+ my_boundaries[166].name = "UAE";
+  
+  //console.log(countriesList);
+    for (let index = 0; index < countriesList.length; index++) {
+    // console.log(countriesList[index].country + " " + index);
+
+        for(let index2 = 0; index2 < 180; index2++){
+
+           
+           //console.log(my_boundaries[index2].name + " " + index2);
+            if(my_boundaries[index2].name != null)
+            {
+            if(countriesList[index].country.toLowerCase() == my_boundaries[index2].name.toLowerCase()  ||
+             countriesList[index].country.toLowerCase().includes(my_boundaries[index2].name.toLowerCase()
+             || my_boundaries[index2].name.toLowerCase().includes(countriesList[index].country.toLowerCase()) )
+            )
+            {         
+                let countryCases = countriesList[index].cases
+                let color = "#ffffff";
+                if(countryCases > 0 && countryCases <= 1000)
+                {
+                    color = "#facfcf";
+                }
+                else if(countryCases > 1000 && countryCases <= 10000)
+                {
+                    color = "#ff6e6e";
+                }
+                else if(countryCases > 10000)
+                {
+                    color = "#ff0a0a";
+                }
+                else{
+                 color = "#000000";
+                }
+                data_layer.overrideStyle(my_boundaries[index2].feature, {
+                    fillColor: color,
+                    fillOpacity: 0.8
+                  });
+            }
+          
+            
+        }
+        }    
+    }
+
+}
