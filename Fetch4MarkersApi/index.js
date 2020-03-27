@@ -84,6 +84,8 @@ function loadBoundariesFromGeoJson(geo_json_url) {
 
     }
   });
+
+  return true;
 }
 
  function mapStart() {
@@ -171,11 +173,22 @@ function loadBoundariesFromGeoJson(geo_json_url) {
   };
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-  loadBoundariesFromGeoJson(
+  let promise = new Promise(function(resolve, reject) {
+  if(loadBoundariesFromGeoJson(
     "https://raw.githubusercontent.com/matej-pavla/Google-Maps-Examples/master/BoundariesExample/geojsons/world.countries.geo.json"
-  );
+  )){
+      resolve("done");
+  }
+  else{
+      reject(new Error("not loaded"));
+  }
 
-  mapStart();
+    
+  }).then(function() {
+    mapStart();
+  })
+
+ 
 
 }
 
