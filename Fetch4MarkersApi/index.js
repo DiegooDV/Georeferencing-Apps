@@ -199,11 +199,12 @@ function colorCountries()
 
    //Modyfy wrong names
 
- my_boundaries[168].name = "Tanzania,";
+   my_boundaries[28].name = "CAR";
+ my_boundaries[168].name = "Tanzania";
  my_boundaries[145].name = "S. Korea";
  my_boundaries[87].name = "Lao";
- my_boundaries[78].name = "Coast D";
- my_boundaries[38].name = "Congo,";
+ my_boundaries[78].name = "Ivory Coast";
+ my_boundaries[38].name = "DRC";
   my_boundaries[169].name = "Usa";
   my_boundaries[131].name = "Serbia";
  my_boundaries[132].name = "Congo";
