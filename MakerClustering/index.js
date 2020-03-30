@@ -45,7 +45,7 @@ function mapStart() {
     var counter = 0;
     locations.forEach( location => {
 
-        console.log(location);
+        //console.log(location);
 
         let marker = new google.maps.Marker({
             map: map,
@@ -66,7 +66,7 @@ function mapStart() {
     });  
     
     document.getElementById("btnroadmap").addEventListener("click", function(){
-        map.setMapTypeId('terrain');
+        map.setMapTypeId('roadmap');
     });
 
     document.getElementById("btnsatellite").addEventListener("click", function(){
