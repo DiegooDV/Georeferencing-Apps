@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App 7</title>
+    <title>App 8</title>
     <link rel="icon" href="https://image.flaticon.com/icons/svg/854/854929.svg" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <style>
 
         body{
-            background-image: url('../IMG/back2.jpg');
+            background-image: url('../IMG/back8.jpg');
         }
 
         #map{
@@ -62,29 +62,22 @@
     </div>
       </nav>
 
-
+        <form>
         <div class="container p-5">
+            <h1 class="text-center text-white">Google Maps Languages</h1>
             <div class="row">
+                <div class="col-6">
+                    <select id="sltIdiom" class="form-control" onchange="this.form.submit()">
+                    <option value="es">Espanol</option>
+                    <option value="en">Ingles</option>
+                </select>
+                </div>
                 <div class="col-12">
-                    <h1 class="text-center text-white">Google Maps Markers Clustering</h1>
                     <div id="map"></div>
                 </div>
             </div>
-            <div class="row text-center p-2">
-                <div class="col-3">
-                    <button class="btn btn-primary" id="btnroadmap">Roadmap</button>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-warning" id="btnsatellite">Satellite</button>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-danger" id="btnhybrid">Hybrid</button>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-success" id="btnterrain">Terrain</button>
-                </div>
-            </div>
         </div>
+    </form>
 
 
   
@@ -98,9 +91,6 @@
     crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 <script src="index.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=mapStart" async defer></script>
 </body>
 </html>
