@@ -16,7 +16,7 @@ document.getElementById('sltIdiom').value = idiom;
 
 
 var script = document.createElement('script');
-script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCNe-mjWzhEUSwDH7BvgJWtMxZUZmmFI2U&callback=mapStart&language=' + idiom;
+script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=mapStart&language=' + idiom;
 document.head.appendChild(script);
 
 function mapStart() {
