@@ -1,6 +1,6 @@
 var countries = document.getElementById("countries");
 
-fetch('https://corona.lmao.ninja/countries')
+fetch('https://corona.lmao.ninja/v2/countries')
 .then(function(response) {
 
     response.json().then(function(data) {
