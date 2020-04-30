@@ -1,4 +1,4 @@
-const userLoggedWithGoogle = false;
+var userLoggedWithGoogle = false;
 auth.onAuthStateChanged(user => {
 
     if(user)
@@ -107,7 +107,7 @@ formRegister.addEventListener('submit', (e) =>{
     });
 });
 
-googleLogin() = () => {
+googleLogin = () => {
     userLoggedWithGoogle = true;
     let provider = new firebase.auth.GoogleAuthProvider();
 
@@ -122,11 +122,13 @@ googleLogin() = () => {
         <p>Email: ${user.displayEmail}</p> 
         <img src='${user.phoroURL}'  style="width:40px; height: 40px;`;
 
+        accountInfo.innerHTML = html;
+        
         $("#modalLogin").modal("hide");
         formLogin.reset();
         Swal.fire("Welcome home");
     }).catch((err) => {
         Swal.fire("Error", err.message, "error");
       });
-    
+ 
 }
