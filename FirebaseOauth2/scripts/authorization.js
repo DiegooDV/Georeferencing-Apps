@@ -1,8 +1,7 @@
-var userLoggedWithGoogle = true;
 auth.onAuthStateChanged(user => {
-
     if(user)
     {
+      console.log(user);
         db.collection("Menu").onSnapshot(snapshot => {
          getMenu(snapshot.docs);
         });
@@ -108,7 +107,6 @@ formRegister.addEventListener('submit', (e) =>{
 });
 
 googleLogin = () => {
-    userLoggedWithGoogle = true;
     let provider = new firebase.auth.GoogleAuthProvider();
 
     firebase.auth().signInWithPopup(provider).then(function(result){

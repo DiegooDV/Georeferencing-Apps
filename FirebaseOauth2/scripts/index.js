@@ -10,9 +10,8 @@ const configureNavbar = (user) => {
     loggedOutElements.forEach((item) => {
       item.style.display = "none";
     });
-if(userLoggedWithGoogle == false)
-{
 
+    
     db.collection("Users").doc(user.uid).get().then( doc => {
         const html = 
         `<p>Name: ${doc.data().name}</p>
@@ -22,7 +21,6 @@ if(userLoggedWithGoogle == false)
 
         accountInfo.innerHTML = html;
     });
-}
 
   } else {
     loggedInElements.forEach((item) => {
