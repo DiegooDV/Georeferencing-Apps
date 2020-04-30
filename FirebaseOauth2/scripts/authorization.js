@@ -1,4 +1,4 @@
-var userLoggedWithGoogle = false;
+var userLoggedWithGoogle = true;
 auth.onAuthStateChanged(user => {
 
     if(user)
