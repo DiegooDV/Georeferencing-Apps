@@ -10,7 +10,7 @@ const configureNavbar = (user) => {
     loggedOutElements.forEach((item) => {
       item.style.display = "none";
     });
-if(userLoggedWithGoogle)
+if(userLoggedWithGoogle == false)
 {
 
     db.collection("Users").doc(user.uid).get().then( doc => {
