@@ -1,5 +1,4 @@
 
-
 auth.onAuthStateChanged(user => {
     if(user)
     {
@@ -102,6 +101,9 @@ formRegister.addEventListener('submit', (e) =>{
         });
 
     }).then(() =>{
+
+        localStorage.setItem("loginInfo", "email");
+        loginInfo = "email";
         $("#modalRegister").modal("hide");
         formRegister.reset();
         Swal.fire("Welcome aboard");
