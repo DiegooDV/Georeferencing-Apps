@@ -3,7 +3,6 @@
 auth.onAuthStateChanged(user => {
     if(user)
     {
-      console.log(user);
         db.collection("Menu").onSnapshot(snapshot => {
          getMenu(snapshot.docs);
         });
@@ -24,11 +23,10 @@ formLogin.addEventListener("submit", (e) => {
 
 auth.signInWithEmailAndPassword(email, password)
     .then((credentials) => {
-      console.log(credentials);
       $("#modalLogin").modal("hide");
       formLogin.reset();
-      //add session storage 
-      sessionStorage.setItem("loggedByEmail", true);
+      //add local storage 
+      localStorage.setItem("loggedByEmail", true);
       loggedByEmail = true;
       Swal.fire("Welcome home");
     })
@@ -51,8 +49,8 @@ salir.addEventListener("click", (e) => {
   }).then((result) => {
     if (result.value) {
       auth.signOut().then(() => {
-        //clear session storage
-        sessionStorage.clear();
+        //clear local storage
+        localStorage.clear();
         let timerInterval;
         Swal.fire({
           title: "Signing out",
