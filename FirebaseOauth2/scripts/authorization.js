@@ -94,6 +94,8 @@ formRegister.addEventListener('submit', (e) =>{
 
     auth.createUserWithEmailAndPassword(email, password).then( (credentials) => {
         
+         localStorage.setItem("loginInfo", "email");
+        loginInfo = "email";
         return db.collection("Users").doc(credentials.user.uid).set({
             name: name,
             phone: phone,
@@ -102,8 +104,7 @@ formRegister.addEventListener('submit', (e) =>{
 
     }).then(() =>{
 
-        localStorage.setItem("loginInfo", "email");
-        loginInfo = "email";
+        
         $("#modalRegister").modal("hide");
         formRegister.reset();
         Swal.fire("Welcome aboard");
