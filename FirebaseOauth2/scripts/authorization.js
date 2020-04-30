@@ -120,7 +120,7 @@ googleLogin = () => {
         let html =  `
         <p>Name: ${user.displayName}</p>
         <p>Email: ${user.email}</p> 
-        <img src='${user.photoURL}'  style="width:40px; height: 40px;`;
+        <img src='${user.photoURL}'  style="width:40px; height: 40px;>`;
 
         accountInfo.innerHTML = html;
         
