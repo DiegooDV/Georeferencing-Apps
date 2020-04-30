@@ -1,3 +1,5 @@
+var loggedByEmail = sessionStorage.getItem('loggedByEmail')
+
 const accountInfo = document.querySelector(".accountInfo");
 const loggedInElements = document.querySelectorAll(".logged-in");
 const loggedOutElements = document.querySelectorAll(".logged-out");

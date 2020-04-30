@@ -1,4 +1,4 @@
-var loggedByEmail = sessionStorage.getItem('loggedByEmail')
+//look if there is a user logged in by email
 
 auth.onAuthStateChanged(user => {
     if(user)
@@ -27,7 +27,9 @@ auth.signInWithEmailAndPassword(email, password)
       console.log(credentials);
       $("#modalLogin").modal("hide");
       formLogin.reset();
+      //add session storage 
       sessionStorage.setItem("loggedByEmail", true);
+      loggedByEmail = true;
       Swal.fire("Welcome home");
     })
     .catch((err) => {
@@ -49,7 +51,8 @@ salir.addEventListener("click", (e) => {
   }).then((result) => {
     if (result.value) {
       auth.signOut().then(() => {
-        userLoggedWithGoogle = false;
+        //clear session storage
+        sessionStorage.clear();
         let timerInterval;
         Swal.fire({
           title: "Signing out",
