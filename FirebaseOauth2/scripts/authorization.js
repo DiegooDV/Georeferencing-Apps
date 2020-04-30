@@ -1,3 +1,5 @@
+var loggedByEmail = sessionStorage.getItem('loggedByEmail')
+
 auth.onAuthStateChanged(user => {
     if(user)
     {
@@ -20,12 +22,12 @@ formLogin.addEventListener("submit", (e) => {
   let email = formLogin["email"].value;
   let password = formLogin["password"].value;
 
-  auth
-    .signInWithEmailAndPassword(email, password)
+auth.signInWithEmailAndPassword(email, password)
     .then((credentials) => {
       console.log(credentials);
       $("#modalLogin").modal("hide");
       formLogin.reset();
+      sessionStorage.setItem("loggedByEmail", true);
       Swal.fire("Welcome home");
     })
     .catch((err) => {
@@ -118,7 +120,7 @@ googleLogin = () => {
         let html =  `
         <p>Name: ${user.displayName}</p>
         <p>Email: ${user.email}</p> 
-        <img src="${user.photoURL}" style="width:40px; height: 40px;>`;
+        <img src="${user.photoURL}" style="width:40px; height: 40px;">`;
 
         accountInfo.innerHTML = html;
         

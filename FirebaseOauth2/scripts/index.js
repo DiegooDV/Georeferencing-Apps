@@ -11,7 +11,9 @@ const configureNavbar = (user) => {
       item.style.display = "none";
     });
 
-    
+
+    if(loggedByEmail)
+    {   
     db.collection("Users").doc(user.uid).get().then( doc => {
         const html = 
         `<p>Name: ${doc.data().name}</p>
@@ -21,6 +23,7 @@ const configureNavbar = (user) => {
 
         accountInfo.innerHTML = html;
     });
+  }
 
   } else {
     loggedInElements.forEach((item) => {
