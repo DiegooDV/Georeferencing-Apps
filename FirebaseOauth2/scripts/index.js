@@ -61,7 +61,7 @@ const getMenu = (data) => {
         if(data.length >=1 )
         {
         data.forEach(doc => {
-            const column =  `<div class="col-12 col-md-4">
+            const column =  `<div class="col-12 col-md-4 wow bounceInLeft" >
             <img class="img-fluid w-100" src="img/${doc.data().image}" />
             <h4>${doc.data().name}</h4>
             <h4>$ ${doc.data().price}</h4>
