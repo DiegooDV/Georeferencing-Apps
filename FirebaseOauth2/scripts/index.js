@@ -1,5 +1,4 @@
 var loginInfo = localStorage.getItem('loginInfo')
-var loginInfo = localStorage.getItem('loginInfo')
 
 const accountInfo = document.querySelector(".accountInfo");
 const loggedInElements = document.querySelectorAll(".logged-in");
