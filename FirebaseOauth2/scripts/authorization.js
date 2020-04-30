@@ -1,4 +1,4 @@
-//look if there is a user logged in by email
+
 
 auth.onAuthStateChanged(user => {
     if(user)
@@ -26,8 +26,8 @@ auth.signInWithEmailAndPassword(email, password)
       $("#modalLogin").modal("hide");
       formLogin.reset();
       //add local storage 
-      localStorage.setItem("loggedByEmail", true);
-      loggedByEmail = true;
+      localStorage.setItem("loginInfo", "email");
+      loginInfo = "email";
       Swal.fire("Welcome home");
     })
     .catch((err) => {
@@ -51,7 +51,7 @@ salir.addEventListener("click", (e) => {
       auth.signOut().then(() => {
         //clear local storage
         localStorage.clear();
-        loggedByEmail = null;
+        loginInfo = null;
         let timerInterval;
         Swal.fire({
           title: "Signing out",
@@ -125,6 +125,8 @@ googleLogin = () => {
         <img src="${user.photoURL}" style="width:40px; height: 40px;">`;
 
         accountInfo.innerHTML = html;
+        localStorage.setItem("loginInfo", "gmail");
+         loginInfo = "gmail";
         
         $("#modalLogin").modal("hide");
         formLogin.reset();

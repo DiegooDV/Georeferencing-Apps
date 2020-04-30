@@ -1,4 +1,5 @@
-var loggedByEmail = localStorage.getItem('loggedByEmail')
+var loginInfo = localStorage.getItem('loginInfo')
+var loginInfo = localStorage.getItem('loginInfo')
 
 const accountInfo = document.querySelector(".accountInfo");
 const loggedInElements = document.querySelectorAll(".logged-in");
@@ -14,18 +15,32 @@ const configureNavbar = (user) => {
     });
 
 
-    if(loggedByEmail)
-    {   
-    db.collection("Users").doc(user.uid).get().then( doc => {
-        const html = 
-        `<p>Name: ${doc.data().name}</p>
-        <p>Email: ${user.email}</p>
-        <p>Address: ${doc.data().address}</p>
-        <p>Phone: ${doc.data().phone}</p>`;
+switch (loginInfo) {
 
-        accountInfo.innerHTML = html;
-    });
-  }
+  case "email":
+    db.collection("Users").doc(user.uid).get().then( doc => {
+      const html = 
+      `<p>Name: ${doc.data().name}</p>
+      <p>Email: ${user.email}</p>
+      <p>Address: ${doc.data().address}</p>
+      <p>Phone: ${doc.data().phone}</p>`;
+
+      accountInfo.innerHTML = html;
+  });
+    break;
+  case "gmail":
+    let html =  `
+    <p>Name: ${user.displayName}</p>
+    <p>Email: ${user.email}</p> 
+    <img src="${user.photoURL}" style="width:40px; height: 40px;">`;
+
+    accountInfo.innerHTML = html;
+    break;
+    default: console.log("No login info");
+      break;
+}
+
+  
 
   } else {
     loggedInElements.forEach((item) => {
