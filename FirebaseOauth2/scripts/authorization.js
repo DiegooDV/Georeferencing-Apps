@@ -51,6 +51,7 @@ salir.addEventListener("click", (e) => {
       auth.signOut().then(() => {
         //clear local storage
         localStorage.clear();
+        loggedByEmail = null;
         let timerInterval;
         Swal.fire({
           title: "Signing out",
