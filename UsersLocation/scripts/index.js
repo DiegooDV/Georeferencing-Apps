@@ -76,7 +76,7 @@ const getUsers = (data) => {
 
           var pos = {
             lat: element.data().coordinates.latitude,
-            lng: doc.data().coordinates.longitude
+            lng: element.data().coordinates.longitude
           };
 
           infoW.setPosition(pos);
