@@ -5,15 +5,10 @@ auth.onAuthStateChanged(user => {
 
       if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition( position => {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
           db.collection('users').doc(user.uid).update({
             coordinates : {
-              latitude: pos.lat,
-              longitude: pos.lng
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
             }
           });
         })
