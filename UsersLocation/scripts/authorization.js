@@ -5,19 +5,23 @@ auth.onAuthStateChanged(user => {
 
       if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition( position => {
-          db.collection('users').doc(user.uid).update({
+          console.log(position);
+
+          db.collection('Users').doc(user.uid).update({
             coordinates : {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
             }
           });
-        })
+        });
       }
   
-        db.collection("Users").onSnapshot(snapshot => {
-         getUsers(snapshot.docs);
-        });
+      db.collection('users').onSnapshot(snapshot =>{
+        getUsers(snapshot.docs);
         configureNavbar(user);
+           }, err => {
+        console.log(err.message);
+    });
     }
     else{
         getUsers(null);

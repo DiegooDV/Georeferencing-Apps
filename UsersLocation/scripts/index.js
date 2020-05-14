@@ -56,7 +56,6 @@ switch (loginInfo) {
 
 const getUsers = (data) => {
 
-    let html = "";
     if(data)
     {
         if(data.length >=1 )
@@ -80,7 +79,7 @@ const getUsers = (data) => {
           };
 
           infoW.setPosition(pos);
-          infoW.setContent(element.data.name);
+          infoW.setContent(element.data().name);
           infoW.open(googleMap);
 
         });
