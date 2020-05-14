@@ -68,11 +68,11 @@ const getUsers = (data) => {
         }
 
         var map = document.getElementById('map');
-        var googleMap = new googleMap.maps.Map(map, properties);
+        var googleMap = new google.maps.Map(map, properties);
 
         data.forEach(element => {
           
-          infoW = new googleMap.maps.InfoWindow;
+          infoW = new google.maps.InfoWindow;
 
           var pos = {
             lat: element.data().coordinates.latitude,
