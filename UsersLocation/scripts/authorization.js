@@ -11,7 +11,10 @@ auth.onAuthStateChanged(user => {
           };
 
           db.collection('users').doc(user.uid).update({
-            coordinates : pos
+            coordinates : {
+              latitude: pos.lat,
+              longitude: pos.lng
+            }
           });
         })
       }
