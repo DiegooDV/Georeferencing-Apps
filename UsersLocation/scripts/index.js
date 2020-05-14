@@ -53,7 +53,6 @@ switch (loginInfo) {
   }
 };
 
-const menu = document.getElementById("menu");
 
 const getUsers = (data) => {
 
@@ -88,13 +87,11 @@ const getUsers = (data) => {
 
         }
         else{
-            html = "<h3 class='mt-5'>No pizzas available, try again later</h3>"
-            menu.innerHTML = html;
+
         }
       
     }
     else{
-        html = "<h3 class='mt-5'>You need to log in to see our menu</h3>"
-        menu.innerHTML = html;
+
     }
 }
