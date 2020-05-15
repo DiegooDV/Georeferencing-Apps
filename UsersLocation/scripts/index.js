@@ -58,7 +58,6 @@ const getUsers = (data) => {
 
     if(data)
     {
-        console.log(data);
         if(data.length >=1 )
         {
 

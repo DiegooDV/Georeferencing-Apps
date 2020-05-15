@@ -5,7 +5,6 @@ auth.onAuthStateChanged(user => {
 
       if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition( position => {
-          console.log(position);
 
           db.collection('Users').doc(user.uid).update({
             coordinates : {
@@ -17,7 +16,6 @@ auth.onAuthStateChanged(user => {
       }
   
       db.collection('Users').onSnapshot(snapshot =>{
-        console.log(snapshot.docs);
         getUsers(snapshot.docs);
         configureNavbar(user);
            }, err => {
