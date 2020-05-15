@@ -86,11 +86,11 @@ const getUsers = (data) => {
 
         }
         else{
-          
+          Swal.fire("No users found :(");
         }
       
     }
     else{
-
+        
     }
 }
