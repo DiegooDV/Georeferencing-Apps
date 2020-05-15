@@ -16,7 +16,8 @@ auth.onAuthStateChanged(user => {
         });
       }
   
-      db.collection('users').onSnapshot(snapshot =>{
+      db.collection('Users').onSnapshot(snapshot =>{
+        console.log(snapshot.docs);
         getUsers(snapshot.docs);
         configureNavbar(user);
            }, err => {
@@ -115,7 +116,8 @@ formRegister.addEventListener('submit', (e) =>{
         return db.collection("Users").doc(credentials.user.uid).set({
             name: name,
             phone: phone,
-            address: address
+            address: address,
+            coordinates: {latitude:0, longitude: 0}
         });
 
     }).then(() =>{

@@ -58,13 +58,14 @@ const getUsers = (data) => {
 
     if(data)
     {
+        console.log(data);
         if(data.length >=1 )
         {
-        
+
           var properties = {
             center: {lat: 21.152639, lng: -101.711598 },
             zoom: 14
-        }
+             }
 
         var map = document.getElementById('map');
         var googleMap = new google.maps.Map(map, properties);
