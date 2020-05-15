@@ -1,4 +1,6 @@
 
+
+
 auth.onAuthStateChanged(user => {
     if(user)
     {
@@ -107,26 +109,37 @@ formRegister.addEventListener('submit', (e) =>{
     let address = formRegister["addressRegister"].value;
     let phone = formRegister["phoneRegister"].value;
 
-    auth.createUserWithEmailAndPassword(email, password).then( (credentials) => {
-        
-         localStorage.setItem("loginInfo", "email");
-        loginInfo = "email";
-        return db.collection("Users").doc(credentials.user.uid).set({
-            name: name,
-            phone: phone,
-            address: address,
-            coordinates: {latitude:0, longitude: 0}
-        });
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition( position => {
 
-    }).then(() =>{
-
+        auth.createUserWithEmailAndPassword(email, password).then( (credentials) => {
         
-        $("#modalRegister").modal("hide");
-        formRegister.reset();
-        Swal.fire("Welcome aboard");
-    }).catch((err) => {
-        Swal.fire("Error", err.message, "error");
-    });
+          localStorage.setItem("loginInfo", "email");
+         loginInfo = "email";
+         return db.collection("Users").doc(credentials.user.uid).set({
+             name: name,
+             phone: phone,
+             address: address,
+             coordinates:{latitude: position.coords.latitude, longitude: position.coords.longitude}
+             });
+ 
+     }).then(() =>{
+ 
+         
+         $("#modalRegister").modal("hide");
+         formRegister.reset();
+         Swal.fire("Welcome aboard");
+     }).catch((err) => {
+         Swal.fire("Error", err.message, "error");
+     });
+      })
+    }
+    else {
+      Swal.fire('You need to permit location');
+    }
+
+
+   
 });
 
 googleLogin = () => {
