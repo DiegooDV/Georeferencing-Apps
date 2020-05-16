@@ -58,7 +58,7 @@
                         <p>Speed: ${speed}</p>
                         <p>Time: ${time}</p>`;
 
-                        const data = getElementById('data');
+                        const data = document.getElementById('data');
                         data.innerHTML = html;
 
                         marker.setPosition(new google.maps.LatLng(lat, lng));
@@ -68,7 +68,7 @@
                 })
             }
 
-            const btnStop = getElementById('btnStop');
+            const btnStop = document.getElementById('btnStop');
 
             btnStop.addEventListener('click', function() {
                 
