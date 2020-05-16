@@ -44,7 +44,19 @@
 
                         var coordinates = `${lat}, ${lng}`;
 
-                        const html = `<p>Coordinates: ${coordinates}</p>`;
+                        var accuracy = position.coords.accuracy? position.coords.accuracy : 'No available';
+                        var altitude = position.coords.altitude? position.coords.altitude : 'No available';
+                        var speed = position.coords.speed? position.coords.speed : 'No available';
+                        var time = new Date(position.timestamp.toString());
+
+
+
+
+                        const html = `<p>Coordinates: ${coordinates}</p>
+                        <p>Accuracy: ${accuracy}</p>
+                        <p>Altitude: ${altitude}</p>
+                        <p>Speed: ${speed}</p>
+                        <p>Time: ${time}</p>`;
 
                         const data = getElementById('data');
                         data.innerHTML = html;
@@ -55,6 +67,17 @@
                     }, error, positionOptions); 
                 })
             }
+
+            const btnStop = getElementById('btnStop');
+
+            btnStop.addEventListener('click', function() {
+                
+                if (watchId  !== null) {
+                    navigator.geolocation.clearWatch(watchId);
+                    let html = `<p>Se detuvo el monitoreo</p>`;
+                    data.innerHTML = html;
+                }
+            })
         }
 
         function error(positionError)
