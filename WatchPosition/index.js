@@ -47,7 +47,7 @@
                         var accuracy = position.coords.accuracy? position.coords.accuracy : 'No available';
                         var altitude = position.coords.altitude? position.coords.altitude : 'No available';
                         var speed = position.coords.speed? position.coords.speed : 'No available';
-                        var time = new Date(position.timestamp.toString());
+                        var time = new Date(position.timestamp).toString();
 
 
 
