@@ -52,11 +52,11 @@
 
 
 
-                        const html = `<p>Coordinates: ${coordinates}</p>
-                        <p>Accuracy: ${accuracy}</p>
-                        <p>Altitude: ${altitude}</p>
-                        <p>Speed: ${speed}</p>
-                        <p>Time: ${time}</p>`;
+                        const html = `<h4 class="text-white">Coordinates: ${coordinates}</h4>
+                        <h4 class="text-white">Accuracy: ${accuracy}</h4>
+                        <h4 class="text-white">Altitude: ${altitude}</h4>
+                        <h4 class="text-white">Speed: ${speed}</h4>
+                        <h4 class="text-white">Time: ${time}</h4>`;
 
                         const data = document.getElementById('data');
                         data.innerHTML = html;
@@ -74,7 +74,7 @@
                 
                 if (watchId  !== null) {
                     navigator.geolocation.clearWatch(watchId);
-                    let html = `<p>Se detuvo el monitoreo</p>`;
+                    let html = `<h4 class="text-white">Se detuvo el monitoreo</h4>`;
                     data.innerHTML = html;
                 }
             })
