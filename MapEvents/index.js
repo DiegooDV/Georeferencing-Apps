@@ -86,7 +86,7 @@ function mapStart() {
       }
       case 6: {
 
-        google.maps.event.addDoomListener(maps[index], 'click', function(){
+        google.maps.event.addDomListener(maps[index], 'click', function(){
           window.alert('Map clicked!');
         })
 
