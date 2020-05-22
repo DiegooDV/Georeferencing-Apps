@@ -60,15 +60,28 @@ function mapStart() {
       }
       case 4: {
         maps[index].addListener('click', function(e){
-
-
           createMarker(e.latLng, index);
-
         })
-
         break;
       }
       case 5: {
+        let infoWindow = new google.maps.InfoWindow({
+          content: "Click to get coordinates",
+          position: coordinates
+        });
+
+        infoWindow.open(maps[index]);
+
+        maps[index].addListener('click', function(mapsMouseEvent){
+          infoWindow.close();
+
+          let infoWindow = new google.maps.InfoWindow({
+            position: mapsMouseEvent.latLng
+          });
+
+          infoWindow.setContent(mapsMouseEvent.latLng.toString());
+
+        })
         break;
       }
       case 6: {
@@ -82,11 +95,13 @@ function mapStart() {
   }
 }
 
+
+
 function createMarker(latLng, index)
 {
   let marker = new google.maps.Marker({
     position: latLng,
     map:  maps[index],
   });
-  map.panTo(latLng);
+  maps[index].panTo(latLng);
 }
