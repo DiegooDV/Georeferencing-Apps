@@ -91,7 +91,7 @@ function mapStart() {
         })
 
         var button = document.getElementById('btnCenter');
-        google.maps.event.addDoomListener(button, 'click', function(){
+        google.maps.event.addDomListener(button, 'click', function(){
           maps[index].panTo(coordinates);
         })
 
