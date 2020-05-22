@@ -75,7 +75,7 @@ function mapStart() {
         maps[index].addListener('click', function(mapsMouseEvent){
           infoWindow2.close();
 
-          let infoWindow2 = new google.maps.InfoWindow({
+           infoWindow2 = new google.maps.InfoWindow({
             position: mapsMouseEvent.latLng
           });
 
@@ -85,6 +85,16 @@ function mapStart() {
         break;
       }
       case 6: {
+
+        google.maps.event.addDoomListener(maps[index], 'click', function(){
+          window.alert('Map clicked!');
+        })
+
+        var button = document.getElementById('btnCenter');
+        google.maps.event.addDoomListener(button, 'click', function(){
+          maps[index].panTo(coordinates);
+        })
+
         break;
       }
 
