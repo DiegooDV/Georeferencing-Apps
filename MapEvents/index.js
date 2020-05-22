@@ -65,7 +65,7 @@ function mapStart() {
         break;
       }
       case 5: {
-        var infoWindow2 = new google.maps.InfoWindow({
+        let infoWindow2 = new google.maps.InfoWindow({
           content: "Click to get coordinates",
           position: coordinates
         });
@@ -80,6 +80,7 @@ function mapStart() {
           });
 
           infoWindow2.setContent(mapsMouseEvent.latLng.toString());
+          infoWindow2.open(maps[index]);
 
         })
         break;
