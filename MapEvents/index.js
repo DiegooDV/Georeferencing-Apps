@@ -60,26 +60,26 @@ function mapStart() {
       }
       case 4: {
         maps[index].addListener('click', function(e){
-          createMarker(e.latLng, index);
+          createMarker(e.latLng, maps[index]);
         })
         break;
       }
       case 5: {
-        let infoWindow = new google.maps.InfoWindow({
+        let infoWindow2 = new google.maps.InfoWindow({
           content: "Click to get coordinates",
           position: coordinates
         });
 
-        infoWindow.open(maps[index]);
+        infoWindow2.open(maps[index]);
 
         maps[index].addListener('click', function(mapsMouseEvent){
-          infoWindow.close();
+          infoWindow2.close();
 
-          let infoWindow = new google.maps.InfoWindow({
+          let infoWindow2 = new google.maps.InfoWindow({
             position: mapsMouseEvent.latLng
           });
 
-          infoWindow.setContent(mapsMouseEvent.latLng.toString());
+          infoWindow2.setContent(mapsMouseEvent.latLng.toString());
 
         })
         break;
@@ -97,11 +97,11 @@ function mapStart() {
 
 
 
-function createMarker(latLng, index)
+function createMarker(latLng, map)
 {
   let marker = new google.maps.Marker({
     position: latLng,
-    map:  maps[index],
+    map:  map,
   });
-  maps[index].panTo(latLng);
+  map.panTo(latLng);
 }
