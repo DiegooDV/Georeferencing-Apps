@@ -9,37 +9,37 @@ function mapStart() {
     zoom: 12,
   };
 
-  var map;
+  var maps = [];
 
   for (let index = 1; index <= 6; index++) {
 
-    map = new google.maps.Map(
+    maps[index] = new google.maps.Map(
       document.getElementById(`map${index}`),
       properties
     );
-
     switch (index) {
       case 1:
+        
         let marker = new google.maps.Marker({
           position: coordinates,
-          map: map,
+          map:  maps[index],
         });
 
         marker.addListener("click", function () {
-          map.setZoom(8);
-          map.setCenter(marker.getPosition());
+          maps[index].setZoom(8);
+          maps[index].setCenter(marker.getPosition());
         });
 
         break;
       case 2: {
         let marker = new google.maps.Marker({
           position: coordinates,
-          map: map,
+          map:  maps[index],
         });
 
-        map.addListener("center_changed", function () {
+        maps[index].addListener("center_changed", function () {
           window.setTimeout(function () {
-            map.panTo(marker.getPosition());
+            maps[index].panTo(marker.getPosition());
           }, 3000);
         });
 
@@ -51,18 +51,18 @@ function mapStart() {
           position: coordinates
         });
 
-        infoWindow.open(map);
+        infoWindow.open(maps[index]);
 
-        map.addListener('zoom_changed', function(){
-          infoWindow.setContent('Zoom lvl: ' + map.getZoom());
+        maps[index].addListener('zoom_changed', function(){
+          infoWindow.setContent('Zoom lvl: ' +  maps[index].getZoom());
         });
         break;
       }
       case 4: {
-        map.addListener('click', function(e){
+        maps[index].addListener('click', function(e){
 
 
-          createMarker(e.latLng);
+          createMarker(e.latLng, index);
 
         })
 
@@ -82,11 +82,11 @@ function mapStart() {
   }
 }
 
-function createMarker(latLng)
+function createMarker(latLng, index)
 {
   let marker = new google.maps.Marker({
     position: latLng,
-    map: map,
+    map:  maps[index],
   });
   map.panTo(latLng);
 }
