@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watch Position</title>
+    <title>Map Events</title>
     <link rel="icon" href="https://image.flaticon.com/icons/svg/854/854929.svg" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
@@ -15,11 +15,20 @@
             padding: 0px;
         }
 
-        #map {
+        body {
+            background: url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .map {
             width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0px;
+            height: 25rem;
+        }
+        .jumbotron{
+            background-color: bisque;
         }
     </style>
 </head>
@@ -64,7 +73,7 @@
                 <li class="nav-item  ">
                     <a class="nav-link" href="../MapStyle/index.html">App 9</a>
                 </li>
-                <li class="nav-item active ">
+                <li class="nav-item  ">
                     <a class="nav-link" href="../WatchPosition/index.html">App 10</a>
                 </li>
                 <li class="nav-item ">
@@ -72,7 +81,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../MapEvents/index.html">App 12</a>
-                </li>
                 </li>
             </ul>
             <span class="navbar-text">
@@ -83,35 +91,59 @@
     </nav>
 
 
-    <div class="container-fluid text-center p-5 bg-secondary">
+    <div class="container-fluid">
+        <h1 class="text-white text-center mt-3">Map Controls</h1>
         <div class="row">
-            <div class="col-12 col-md-6 ">
-                <button class="btn btn-lg btn-primary" id="btnWatch">WatchPosition</button>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div id="map1" class="map">
+                </div>
+                <h3 class="jumbotron p-3 text-center">Marker click</h3>
             </div>
-            <div class="col-12 col-md-6 mt-3 mt-md-0">
-                <button class="btn btn-lg btn-danger" id="btnStop">Stop WatchPosition</button>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div id="map2" class="map">
+                </div>
+                <h3 class="jumbotron p-3 text-center">Return to center</h3>
             </div>
-            <div class="col-12 mt-4" id="data">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div id="map3" class="map">
+                </div>
+                <h3 class="jumbotron p-3 text-center">Map without Zoom option</h3>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div id="map4" class="map">
+                </div>
+                <h3 class="jumbotron p-3 text-center">Map with Control Options</h3>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div id="map5" class="map">
+                </div>
+                <h3 class="jumbotron p-3 text-center">Map with Control Position</h3>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div id="map6" class="map">
+                </div>
+                <h3 class="jumbotron p-3 text-center">Map with MapBounds restriction</h3>
             </div>
         </div>
-           
-    </div>
-
-    <div id="map"></div>
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="index.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=mapStart"
-        async defer></script>
+        <div id="map"></div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="index.js"></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADjOfdGIg-7JiqjoTstMN9el4g-nLhxxA&callback=mapStart"
+            async defer></script>
 </body>
 
 </html>
