@@ -53,6 +53,7 @@ function movePosition(){
 function showElements(user)
 {
     if (user) {
+        mapStart();
         loggedInElements.forEach((item) => {
           item.style.display = "block";
         });
