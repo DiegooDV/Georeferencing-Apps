@@ -22,6 +22,48 @@ auth.signInWithEmailAndPassword(email, password)
 });
 
 
+function logOut()
+{
+  Swal.fire({
+    title: "Sign out?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes",
+  }).then((result) => {
+    if (result.value) {
+      auth.signOut().then(() => {
+        let timerInterval;
+        Swal.fire({
+          title: "Signing out",
+          html: "<b></b>",
+          timer: 1000,
+          timerProgressBar: true,
+          onBeforeOpen: () => {
+            Swal.showLoading();
+            timerInterval = setInterval(() => {
+              const content = Swal.getContent();
+              if (content) {
+                const b = content.querySelector("b");
+                if (b) {
+                  b.textContent = Swal.getTimerLeft();
+                }
+              }
+            }, 100);
+          },
+          onClose: () => {
+            clearInterval(timerInterval);
+          },
+        }).then((result) => {
+          if (result.dismiss === Swal.DismissReason.timer) {
+            Swal.fire("Signed out", "", "success");
+          }
+        });
+      });
+    }
+  });
+}
 
 const formRegister = document.getElementById("formRegister");
 
