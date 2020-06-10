@@ -33,7 +33,7 @@ function logOut()
     confirmButtonText: "Yes",
   }).then((result) => {
     if (result.value) {
-      auth.signOut().then(() => {
+
         let timerInterval;
         Swal.fire({
           title: "Signing out",
@@ -56,11 +56,11 @@ function logOut()
             clearInterval(timerInterval);
           },
         }).then((result) => {
+            auth.signOut();
           if (result.dismiss === Swal.DismissReason.timer) {
             Swal.fire("Signed out", "", "success");
           }
         });
-      });
     }
   });
 }
