@@ -110,3 +110,33 @@ function googleLogin(){
       });
  
 }
+
+function googleLogin(){
+    let provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result){
+        var user = result.user;
+        $("#modalLogin").modal("hide");
+        $("#modalCreateAccount").modal("hide");
+        formLogin.reset();
+        formRegister.reset();
+        Swal.fire("Welcome");
+    }).catch((err) => {
+        Swal.fire("Error", err.message, "error");
+      });
+ 
+}
+
+function facebookLogin(){
+    let  provider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result){
+        var user = result.user;
+        $("#modalLogin").modal("hide");
+        $("#modalCreateAccount").modal("hide");
+        formLogin.reset();
+        formRegister.reset();
+        Swal.fire("Welcome");
+    }).catch((err) => {
+        Swal.fire("Error", err.message, "error");
+      });
+ 
+}
