@@ -99,6 +99,10 @@ function googleLogin(){
         formLogin.reset();
         formRegister.reset();
         Swal.fire("Welcome");
+
+        db.collection("Users").doc(user.uid).set({
+          name: user.displayName
+      });
     }).catch((err) => {
         Swal.fire("Error", err.message, "error");
       });
@@ -114,6 +118,9 @@ function facebookLogin(){
         formLogin.reset();
         formRegister.reset();
         Swal.fire("Welcome");
+        db.collection("Users").doc(user.uid).set({
+          name: user.displayName
+      });
     }).catch((err) => {
         Swal.fire("Error", err.message, "error");
       });
