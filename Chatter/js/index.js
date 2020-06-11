@@ -75,13 +75,13 @@ function showElements(user) {
 function loadPeople(data) {
   markers = []
   if (data) {
+
     if (data.length > 0) {
+
       data.forEach((doc) => {
+
         if (doc.data().coordinates !== undefined) {
-          db.collection("Users")
-            .doc(doc.id)
-            .get()
-            .then((doc) => {
+
               var icon = {
                 url: "./IMG/noFriendMarker.png",
                 scaledSize: new google.maps.Size(50, 50),
@@ -90,8 +90,11 @@ function loadPeople(data) {
               var contentString = `<h4>${doc.data().name}</h4> 
               <button class="btn btn-outline-warning btn-block" onclick="addFriend('${doc.id}')">Add friend</button>`;
 
-              doc.data().friends.forEach((friend) => {
-                if ((friend.uid == doc.id)) {
+              if(doc.data().friends !== undefined)
+              {
+        
+             doc.data().friends.forEach((friend) => {
+                if ((friend == doc.id)) {
                   icon = {
                     url: "./IMG/friendMarker.png",
                     scaledSize: new google.maps.Size(50, 50),
@@ -119,15 +122,17 @@ function loadPeople(data) {
                 infowindow.open(map, marker);
               });
 
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+            }
+            else {
+                // no friends
+            }
         }
       });
     } else {
+        //no users
     }
   } else {
+      //data null
   }
 }
 
