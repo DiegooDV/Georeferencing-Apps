@@ -100,7 +100,7 @@ function googleLogin(){
         formRegister.reset();
         Swal.fire("Welcome");
 
-        db.collection("Users").doc(user.uid).set({
+        db.collection("Users").doc(credentials.user.uid).set({
           name: user.displayName
       });
     }).catch((err) => {
