@@ -115,8 +115,8 @@ function loadPeople(data) {
 
           var marker = new google.maps.Marker({
             position: {
-              lat: doc.data().coordinates.latitude,
-              lng: doc.data().coordinates.longitude,
+              lat: document.data().coordinates.latitude,
+              lng: document.data().coordinates.longitude,
             },
             icon: icon,
             map: map,
