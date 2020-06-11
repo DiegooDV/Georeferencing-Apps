@@ -47,7 +47,7 @@ function movePosition(){
         });
         map.panTo(new google.maps.LatLng(pos.lat, pos.lng));
 
-        db.collection("Users").doc(userD.uid).set({
+        db.collection("Users").doc(userD.uid).update({
             coordinates: {latitude: pos.lat, longitude: pos.lng}
         });
     });
