@@ -2,9 +2,23 @@ const formRegister = document.getElementById("formRegister");
 const formLogin = document.getElementById("formLogin");
 
 auth.onAuthStateChanged(user => {
-  mapStart();
+
   userD = user;
   showElements(user);
+  if(user)
+  {
+    mapStart();
+    db.collection("Users").onSnapshot((snapshot) => {
+      loadPeople(snapshot.docs);
+    });
+    
+    db.collection("Users").doc(userD.uid).onSnapshot((snapshot) => {
+        loadFriends(snapshot);
+    });
+  }
+  else{
+
+  }
 }); 
 
 formLogin.addEventListener("submit", (e) => {

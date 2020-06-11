@@ -71,13 +71,6 @@ function showElements(user) {
   }
 }
 
-db.collection("Users").onSnapshot((snapshot) => {
-  loadPeople(snapshot.docs);
-});
-
-db.collection("Users").doc(userD.uid).onSnapshot((snapshot) => {
-    loadFriends(snapshot);
-});
 
 function loadPeople(data) {
   markers = []
