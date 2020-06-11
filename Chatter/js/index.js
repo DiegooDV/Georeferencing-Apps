@@ -1,6 +1,7 @@
 const loggedInElements = document.querySelectorAll(".logged-in");
 const loggedOutElements = document.querySelectorAll(".logged-out");
 var map;
+var userD;
 var coordinates = {
     lat: 0,
     lng: 0
@@ -14,6 +15,7 @@ var properties = {
 }
 $("#btnStart").click(function () { 
     movePosition();
+    
 });
 
 function mapStart()
@@ -31,8 +33,6 @@ function movePosition(){
         scaledSize: new google.maps.Size(50, 50)  
       };
 
-
-
     navigator.geolocation.getCurrentPosition(position => {
 
         var pos = {
@@ -46,7 +46,14 @@ function movePosition(){
             map : map
         });
         map.panTo(new google.maps.LatLng(pos.lat, pos.lng));
+
+        db.collection("Users").doc(userD.uid).set({
+            coordinates: {latitude: pos.lat, longitude: pos.lng}
+        });
     });
+    }
+    else{
+        Swal.fire("No location provided", "", "info"); 
     }
 }
 

@@ -1,11 +1,10 @@
 const formRegister = document.getElementById("formRegister");
 const formLogin = document.getElementById("formLogin");
-var userD;
+
 auth.onAuthStateChanged(user => {
   userD = user;
     showElements(user);
     console.log(userD);
-
 }); 
 
 formLogin.addEventListener("submit", (e) => {
