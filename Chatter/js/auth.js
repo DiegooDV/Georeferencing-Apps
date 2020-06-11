@@ -1,6 +1,6 @@
 const formRegister = document.getElementById("formRegister");
 const formLogin = document.getElementById("formLogin");
-const userD;
+var userD;
 auth.onAuthStateChanged(user => {
   userD = user;
     showElements(user);
