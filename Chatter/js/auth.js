@@ -4,7 +4,7 @@ const formLogin = document.getElementById("formLogin");
 auth.onAuthStateChanged(user => {
   mapStart();
   userD = user;
-    console.log(userD);
+  showElements(user);
 }); 
 
 formLogin.addEventListener("submit", (e) => {
