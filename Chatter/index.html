@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <section class="logged-out" style="display: block;">
+  <section class="logged-out" style="display: none;">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: transparent">
       <a class="navbar-brand" style="font-size: 5rem;">Chatter</a>
     </nav>
@@ -46,7 +46,7 @@
     </div>
   </section>
 
-  <section class="logged-in" style="display: none;">
+  <section class="logged-in" style="display: block;">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: black ;">
       <a class="navbar-brand" style="font-size: 2rem;">Chatter</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -65,15 +65,15 @@
       </div>
     </nav>
 
-    <div class="jumbotron container-fluid mt-5">
-      <div class="row">
+    <div class="jumbotron container-fluid mt-5 mb-0">
+      <div class="row mt-3">
         <div class="col-12 col-md-4 mb-2 mb-md-0 d-flex justify-content-center">
           <img src="IMG/userMarker.png" width="50" height="50">
-          <h4>Your location!</h4>
+          <h4>Your location</h4>
         </div>
         <div class="col-12 col-md-4 mb-2 mb-md-0 d-flex justify-content-center">
           <img src="IMG/noFriendMarker.png" width="50" height="50">
-          <h4>New people found!</h4>
+          <h4>New people found</h4>
         </div>
         <div class="col-12 col-md-4 mb-2 mb-md-0 d-flex justify-content-center">
           <img src="IMG/friendMarker.png" width="50" height="50">
@@ -83,6 +83,14 @@
       </div>
       <div id="map" class="w-100" style="height: 500px;"></div>
       <button class="btn btn-success btn-block" id="btnStart">Start finding people!</button>
+    </div>
+
+    <div style="background-color: black;">
+      <div class="container text-center p-5">
+        <div class="row text-center" id="friendsList">
+
+        </div>
+      </div>  
     </div>
 
 

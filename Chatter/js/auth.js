@@ -2,8 +2,8 @@ const formRegister = document.getElementById("formRegister");
 const formLogin = document.getElementById("formLogin");
 
 auth.onAuthStateChanged(user => {
+  mapStart();
   userD = user;
-    showElements(user);
     console.log(userD);
 }); 
 
@@ -34,7 +34,8 @@ formRegister.addEventListener('submit', (e) =>{
     auth.createUserWithEmailAndPassword(email, password).then( (credentials) => {
         
         return db.collection("Users").doc(credentials.user.uid).set({
-            name: name
+            name: name,
+            coordinates: {latitude: 0, longitude: 0}
         });
 
     }).then(() =>{
@@ -101,7 +102,9 @@ function googleLogin(){
         Swal.fire("Welcome");
 
         db.collection("Users").doc(credentials.user.uid).set({
-          name: user.displayName
+          name: user.displayName,
+          coordinates: {latitude: 0, longitude: 0}
+
       });
     }).catch((err) => {
         Swal.fire("Error", err.message, "error");
@@ -119,7 +122,8 @@ function facebookLogin(){
         formRegister.reset();
         Swal.fire("Welcome");
         db.collection("Users").doc(user.uid).set({
-          name: user.displayName
+          name: user.displayName,
+          coordinates: {latitude: 0, longitude: 0}
       });
     }).catch((err) => {
         Swal.fire("Error", err.message, "error");
