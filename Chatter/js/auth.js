@@ -1,8 +1,10 @@
+const formRegister = document.getElementById("formRegister");
+const formLogin = document.getElementById("formLogin");
+
 auth.onAuthStateChanged(user => {
     showElements(user);
 }); 
 
-const formLogin = document.getElementById("formLogin");
 formLogin.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -21,6 +23,27 @@ auth.signInWithEmailAndPassword(email, password)
     });
 });
 
+formRegister.addEventListener('submit', (e) =>{
+    e.preventDefault();
+    let email = formRegister["txtEmailRegister"].value;
+    let password = formRegister["txtPasswordRegister"].value;
+    let name = formRegister["txtNameRegister"].value;
+
+    auth.createUserWithEmailAndPassword(email, password).then( (credentials) => {
+        
+        return db.collection("Users").doc(credentials.user.uid).set({
+            name: name
+        });
+
+    }).then(() =>{
+        
+        $("#modalCreateAccount").modal("hide");
+        formRegister.reset();
+        Swal.fire("Welcome aboard");
+    }).catch((err) => {
+        Swal.fire("Error", err.message, "error");
+    });
+});
 
 function logOut()
 {
@@ -63,52 +86,6 @@ function logOut()
         });
     }
   });
-}
-
-const formRegister = document.getElementById("formRegister");
-
-formRegister.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    let email = formRegister["emailRegister"].value;
-    let password = formRegister["passwordRegister"].value;
-    let name = formRegister["nameRegister"].value;
-    let address = formRegister["addressRegister"].value;
-    let phone = formRegister["phoneRegister"].value;
-
-    auth.createUserWithEmailAndPassword(email, password).then( (credentials) => {
-        
-         localStorage.setItem("loginInfo", "email");
-        loginInfo = "email";
-        return db.collection("Users").doc(credentials.user.uid).set({
-            name: name,
-            phone: phone,
-            address: address
-        });
-
-    }).then(() =>{
-
-        
-        $("#modalRegister").modal("hide");
-        formRegister.reset();
-        Swal.fire("Welcome aboard");
-    }).catch((err) => {
-        Swal.fire("Error", err.message, "error");
-    });
-});
-
-function googleLogin(){
-    let provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result){
-        var user = result.user;
-        $("#modalLogin").modal("hide");
-        $("#modalCreateAccount").modal("hide");
-        formLogin.reset();
-        formRegister.reset();
-        Swal.fire("Welcome");
-    }).catch((err) => {
-        Swal.fire("Error", err.message, "error");
-      });
- 
 }
 
 function googleLogin(){
