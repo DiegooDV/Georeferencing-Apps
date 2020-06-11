@@ -163,7 +163,16 @@ function removeFriend(uid) {
 
 function loadFriends(snapshot)
 {
-    let friends = snapshot.data().friends;
+    let friends = [];
+    if(snapshot.doc.get('friends') != null)
+    {
+        db.collection("Users").doc(userD.uid).update({
+            friends: []
+        });
+    }
+    else{
+         friends = snapshot.data().friends;
+    }
     let friendsHtml = document.getElementById("friendsList");
     let html = '';
     if(friends.length == 0)
