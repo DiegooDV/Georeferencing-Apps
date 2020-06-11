@@ -164,7 +164,7 @@ function removeFriend(uid) {
 function loadFriends(snapshot)
 {
     let friends = [];
-    if(snapshot.doc.get('friends') != null)
+    if(snapshot.doc.data() === undefined)
     {
         db.collection("Users").doc(userD.uid).update({
             friends: []
