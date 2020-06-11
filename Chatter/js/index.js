@@ -86,15 +86,16 @@ function loadPeople(data) {
                 url: "./IMG/noFriendMarker.png",
                 scaledSize: new google.maps.Size(50, 50),
               };
-
               var contentString = `<h4>${doc.data().name}</h4> 
               <button class="btn btn-outline-warning btn-block" onclick="addFriend('${doc.id}')">Add friend</button>`;
 
               if(doc.data().friends !== undefined)
               {
-        
-             doc.data().friends.forEach((friend) => {
+                 doc.data().friends.forEach((friend) => {
+                     console.log(friend);
+                     console.log(doc.id);
                 if ((friend == doc.id)) {
+                    
                   icon = {
                     url: "./IMG/friendMarker.png",
                     scaledSize: new google.maps.Size(50, 50),
