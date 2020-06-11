@@ -73,68 +73,61 @@ function showElements(user) {
 
 
 function loadPeople(data) {
-  markers = []
-  if (data) {
+  markers = [];
+  let friends = [];
+  
+  db.collection("Users")
+  .doc(userD.uid).get().then((doc)=> {
+    if(doc.data().friends === undefined)
+    {
+        db.collection("Users").doc(doc.id).update({
+            friends: []
+        });
+    }
+    else{
+        friends = doc.data().friends;
+    }
+     
+    data.forEach(document => {
+        
+        var icon = {
+            url: "./IMG/noFriendMarker.png",
+            scaledSize: new google.maps.Size(50, 50),
+          };
+          var contentString = `<h4>${document.data().name}</h4> 
+          <button class="btn btn-outline-warning btn-block" onclick="addFriend('${document.id}')">Add friend</button>`;
 
-    if (data.length > 0) {
-
-      data.forEach((doc) => {
-
-        if (doc.data().coordinates !== undefined) {
-
-              var icon = {
-                url: "./IMG/noFriendMarker.png",
-                scaledSize: new google.maps.Size(50, 50),
-              };
-              var contentString = `<h4>${doc.data().name}</h4> 
-              <button class="btn btn-outline-warning btn-block" onclick="addFriend('${doc.id}')">Add friend</button>`;
-
-              if(doc.data().friends !== undefined)
-              {
-                 doc.data().friends.forEach((friend) => {
-                     console.log(friend);
-                     console.log(doc.id);
-                if ((friend == doc.id)) {
-                    
-                  icon = {
+          friends.forEach(friend => {
+            if(friend == document.id)
+            {
+                icon = {
                     url: "./IMG/friendMarker.png",
                     scaledSize: new google.maps.Size(50, 50),
                   };
-                  contentString = `<h4>${doc.data().name}</h4> 
-                      <button class="btn btn-outline-danger btn-block" onclick="removeFriend('${doc.id}')">Remove friend</button>`;
-                }
-              });
+                  contentString = `<h4>${document.data().name}</h4> 
+                      <button class="btn btn-outline-danger btn-block" onclick="removeFriend('${document.id}')">Remove friend</button>`;
+            } 
+          });
 
-              var infowindow = new google.maps.InfoWindow({
-                content: contentString,
-              });
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString,
+          });
 
-              var marker = new google.maps.Marker({
-                position: {
-                  lat: doc.data().coordinates.latitude,
-                  lng: doc.data().coordinates.longitude,
-                },
-                icon: icon,
-                map: map,
-              });
+          var marker = new google.maps.Marker({
+            position: {
+              lat: doc.data().coordinates.latitude,
+              lng: doc.data().coordinates.longitude,
+            },
+            icon: icon,
+            map: map,
+          });
 
-              markers.push(marker);
-              marker.addListener("click", function () {
-                infowindow.open(map, marker);
-              });
-
-            }
-            else {
-                // no friends
-            }
-        }
-      });
-    } else {
-        //no users
-    }
-  } else {
-      //data null
-  }
+          markers.push(marker);
+          marker.addListener("click", function () {
+            infowindow.open(map, marker);
+          });
+    });
+  });
 }
 
 function addFriend(uid) {
