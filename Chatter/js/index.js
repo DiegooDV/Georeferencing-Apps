@@ -91,7 +91,7 @@ function loadPeople(data) {
               <button class="btn btn-outline-warning btn-block" onclick="addFriend('${doc.id}')">Add friend</button>`;
 
               doc.data().friends.forEach((friend) => {
-                if ((friend.uid = doc.id)) {
+                if ((friend.uid == doc.id)) {
                   icon = {
                     url: "./IMG/friendMarker.png",
                     scaledSize: new google.maps.Size(50, 50),
@@ -132,8 +132,6 @@ function loadPeople(data) {
 }
 
 function addFriend(uid) {
-  console.log(uid);
-
   db.collection("Users")
     .doc(userD.uid)
     .update({
