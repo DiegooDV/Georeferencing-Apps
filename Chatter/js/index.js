@@ -93,7 +93,7 @@ function loadPeople(data) {
               doc.data().friends.forEach((friend) => {
                 if ((friend.uid = doc.id)) {
                   icon = {
-                    url: "./IMG/FriendMarker.png",
+                    url: "./IMG/friendMarker.png",
                     scaledSize: new google.maps.Size(50, 50),
                   };
                   contentString = `<h4>${doc.data().name}</h4> 
