@@ -16,7 +16,11 @@ auth.onAuthStateChanged((user) => {
           if(doc.data().active)
           {
             clearOverlays();
+            movePosition();
             loadPeople(snapshot.docs);
+          }
+          else{
+            stopPosition();
           }
 
         });
