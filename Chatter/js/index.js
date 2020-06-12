@@ -66,11 +66,11 @@ function stopPosition(){
           active: false
         });
 
-        console.log(userMarker);
-        if(userMarker !== null)
+        if(userMarker)
         {
           userMarker.setMap(null);
         }
+        
   clearOverlays();
 }
 
