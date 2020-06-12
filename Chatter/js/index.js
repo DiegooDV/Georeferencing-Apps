@@ -38,14 +38,13 @@ function movePosition() {
         lng: position.coords.longitude,
       };
 
-      var marker = new google.maps.Marker({
+      userMarker = new google.maps.Marker({
         position: { lat: pos.lat, lng: pos.lng },
         icon: icon,
         map: map,
         clickable: false,
       });
 
-      userMarker = marker;
       map.panTo(new google.maps.LatLng(pos.lat, pos.lng));
       db.collection("Users")
         .doc(userD.uid)
