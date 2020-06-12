@@ -223,3 +223,19 @@ function showFindButton(status)
   }
 
 }
+
+function showAccountModal()
+{
+  db.collection("Users")
+  .doc(userD.uid)
+  .get()
+  .then((doc) => {
+
+    let modalBody = document.getElementById('modalBodyAcoount');
+    let html = `<div><h4>${doc.data().name}</h4>
+    <p><b>Status: </b> ${(doc.data().active) ? 'Visible' : 'Not Visible'}</p></div>`;
+
+    modalBody.innerHTML = html;
+  
+  });
+}
