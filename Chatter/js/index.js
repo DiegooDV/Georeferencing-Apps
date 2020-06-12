@@ -18,7 +18,7 @@ $("#btnStart").click(function () {
   movePosition();
 });
 $("#btnStart").click(function () {
-  movePosition();
+  stopPosition();
 });
 
 function mapStart() {
@@ -208,4 +208,18 @@ function loadFriends(snapshot) {
     });
   }
   friendsHtml.innerHTML = html;
+}
+
+function showFindButton(status)
+{
+  if(status)
+  {
+    $("#btnStart").css('display', 'none');
+    $("#btnStop").css('display', 'block');
+  }
+  else{
+    $("#btnStart").css('display', 'block');
+    $("#btnStop").css('display', 'none');
+  }
+
 }

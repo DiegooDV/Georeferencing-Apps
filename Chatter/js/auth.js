@@ -12,11 +12,13 @@ auth.onAuthStateChanged((user) => {
         .doc(userD.uid)
         .get()
         .then((doc) => {
+          showFindButton(doc.data().active);
           if(doc.data().active)
           {
             clearOverlays();
             loadPeople(snapshot.docs);
           }
+
         });
     });
 
