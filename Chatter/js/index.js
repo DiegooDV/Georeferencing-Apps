@@ -237,5 +237,6 @@ function showAccountModal()
 
     modalBody.innerHTML = html;
   
+    $('#modalAccount').modal('show')
   });
 }
