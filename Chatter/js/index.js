@@ -67,7 +67,7 @@ function stopPosition(){
           active: false
         });
 
-        if(userMarker != null)
+        if(userMarker !== null)
         {
           userMarker.setMap(null);
         }

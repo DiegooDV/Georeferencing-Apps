@@ -4,7 +4,7 @@ const formLogin = document.getElementById("formLogin");
 auth.onAuthStateChanged((user) => {
   userD = user;
   showElements(user);
-  if (user) {
+  if (user && userD !== null) {
     mapStart();
     db.collection("Users").onSnapshot((snapshot) => {
 
