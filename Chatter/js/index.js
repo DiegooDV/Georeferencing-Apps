@@ -97,6 +97,7 @@ function loadPeople(data) {
     .doc(userD.uid)
     .get()
     .then((doc) => {
+      console.log(doc.data().active);
       if (doc.data().active) {
         if (doc.data().friends === undefined) {
           db.collection("Users").doc(doc.id).update({
