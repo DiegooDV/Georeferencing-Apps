@@ -71,6 +71,7 @@ function stopPosition(){
         {
           userMarker.setMap(null);
         }
+  clearOverlays();
 }
 
 function showElements(user) {
