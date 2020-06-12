@@ -90,6 +90,8 @@ function loadPeople(data) {
      
     data.forEach(document => {
         
+        if(document.id != userD.uid)
+        {
         var icon = {
             url: "./IMG/noFriendMarker.png",
             scaledSize: new google.maps.Size(50, 50),
@@ -126,6 +128,7 @@ function loadPeople(data) {
           marker.addListener("click", function () {
             infowindow.open(map, marker);
           });
+        }
     });
   });
 }
