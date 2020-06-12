@@ -105,7 +105,7 @@ function loadPeople(data) {
           friends = doc.data().friends;
         }
         data.forEach((document) => {
-          if (doc.data().active) {
+          if (document.data().active) {
           if (document.id != userD.uid) {
             var icon = {
               url: "./IMG/noFriendMarker.png",
