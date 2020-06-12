@@ -17,7 +17,7 @@ var properties = {
 $("#btnStart").click(function () {
   movePosition();
 });
-$("#btnStart").click(function () {
+$("#btnStop").click(function () {
   stopPosition();
 });
 
@@ -67,7 +67,10 @@ function stopPosition(){
           active: false
         });
 
-        userMarker.setMap(null);
+        if(userMarker != null)
+        {
+          userMarker.setMap(null);
+        }
 }
 
 function showElements(user) {
