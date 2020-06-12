@@ -16,9 +16,6 @@ auth.onAuthStateChanged(user => {
         loadFriends(snapshot);
     });
   }
-  else{
-
-  }
 }); 
 
 formLogin.addEventListener("submit", (e) => {
@@ -49,7 +46,8 @@ formRegister.addEventListener('submit', (e) =>{
         
         return db.collection("Users").doc(credentials.user.uid).set({
             name: name,
-            coordinates: {latitude: 0, longitude: 0}
+            coordinates: {latitude: 0, longitude: 0},
+            active: false
         });
 
     }).then(() =>{
@@ -96,6 +94,12 @@ function logOut()
             clearInterval(timerInterval);
           },
         }).then((result) => {
+          db.collection("Users")
+          .doc(userD.uid)
+          .update({
+            coordinates: { latitude: 0, longitude: 0 },
+            active: false
+          });
             auth.signOut();
           if (result.dismiss === Swal.DismissReason.timer) {
             Swal.fire("Signed out", "", "success");
@@ -117,7 +121,9 @@ function googleLogin(){
 
         db.collection("Users").doc(credentials.user.uid).set({
           name: user.displayName,
-          coordinates: {latitude: 0, longitude: 0}
+          coordinates: {latitude: 0, longitude: 0},
+          active: false
+
 
       });
     }).catch((err) => {
@@ -137,7 +143,9 @@ function facebookLogin(){
         Swal.fire("Welcome");
         db.collection("Users").doc(user.uid).set({
           name: user.displayName,
-          coordinates: {latitude: 0, longitude: 0}
+          coordinates: {latitude: 0, longitude: 0},
+          active: false
+
       });
     }).catch((err) => {
         Swal.fire("Error", err.message, "error");
