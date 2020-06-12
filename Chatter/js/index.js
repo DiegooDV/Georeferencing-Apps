@@ -97,8 +97,6 @@ function loadPeople(data) {
     .doc(userD.uid)
     .get()
     .then((doc) => {
-      console.log(doc.data().active);
-      if (doc.data().active) {
         if (doc.data().friends === undefined) {
           db.collection("Users").doc(doc.id).update({
             friends: [],
@@ -107,6 +105,7 @@ function loadPeople(data) {
           friends = doc.data().friends;
         }
         data.forEach((document) => {
+          if (doc.data().active) {
           if (document.id != userD.uid) {
             var icon = {
               url: "./IMG/noFriendMarker.png",
@@ -148,8 +147,9 @@ function loadPeople(data) {
               infowindow.open(map, marker);
             });
           }
+        }
         });
-      }
+      
     });
 }
 
