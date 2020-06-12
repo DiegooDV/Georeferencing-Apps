@@ -65,12 +65,9 @@ function stopPosition(){
           coordinates: { latitude: 0, longitude: 0 },
           active: false
         });
-
-        if(userMarker)
-        {
-          userMarker.setMap(null);
-        }
+  userMarker.setMap(null);
         
+
   clearOverlays();
 }
 
