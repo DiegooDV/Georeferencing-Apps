@@ -2,7 +2,7 @@ const loggedInElements = document.querySelectorAll(".logged-in");
 const loggedOutElements = document.querySelectorAll(".logged-out");
 var map;
 var markers = [];
-var userMarker = null;
+var userMarker;
 var userD;
 var coordinates = {
   lat: 0,
@@ -65,7 +65,10 @@ function stopPosition(){
           coordinates: { latitude: 0, longitude: 0 },
           active: false
         });
-  userMarker.setMap(null);
+        if(userMarker)
+        {
+          userMarker.setMap(null);
+        }
         
 
   clearOverlays();
