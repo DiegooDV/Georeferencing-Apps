@@ -252,11 +252,8 @@ async function loadMessages(snapshot)
     }
   })
 
-  await db.collection("Messages").orderBy("time").get().then((messages) => {
-    console.log(messages.doc);
-    console.log(messages.doc.data());
-
-
+  await db.collection("Messages").get().then((messages) => {
+    console.log(messages);
     friends.forEach(friend => {
       let chat = messages.doc.data().filter(function (el) {
         return (el.from == friend || el.from == userD.uid) && (el.to == friend || el.to == userD.uid)
