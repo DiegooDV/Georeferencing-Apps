@@ -269,6 +269,7 @@ async function loadMessages(snapshot)
 
       chat.forEach(message => {
 
+        console.log(message.data())
         if(message.data().from == friend.uid)
         {
             html += `  <div class="text-left">
