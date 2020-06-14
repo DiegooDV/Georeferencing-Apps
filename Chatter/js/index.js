@@ -255,13 +255,12 @@ async function loadMessages(snapshot)
   await db.collection("Messages").get().then((messages) => {
     console.log(messages);
     console.log(messages.docs[0].data().message);
-    console.log(messages.doc);
 
 
 
     friends.forEach(friend => {
       let chat = messages.docs.filter(function (el) {
-        return (el.from == friend || el.from == userD.uid) && (el.to == friend || el.to == userD.uid)
+        return (el.data().from == friend || el.data().from  == userD.uid) && (el.data().to == friend || el.data().to == userD.uid)
       });
 
       console.log(chat);
