@@ -252,7 +252,7 @@ async function loadMessages(snapshot)
     }
   })
 
-  await db.collection("Messages").orderBy("date", firebase.firestore.Query.Direction.DESCENDING).get().then((messages) => {
+  await db.collection("Messages").orderBy("time").get().then((messages) => {
     friends.forEach(friend => {
       let chat = messages.filter(function (el) {
         return (el.from == friend || el.from == userD.uid) && (el.to == friend || el.to == userD.uid)
