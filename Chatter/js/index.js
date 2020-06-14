@@ -254,6 +254,8 @@ async function loadMessages(snapshot)
 
   await db.collection("Messages").get().then((messages) => {
     console.log(messages);
+    console.log(messages.docs);
+
     friends.forEach(friend => {
       let chat = messages.docs.filter(function (el) {
         return (el.from == friend || el.from == userD.uid) && (el.to == friend || el.to == userD.uid)
