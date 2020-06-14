@@ -269,7 +269,8 @@ async function loadMessages(snapshot)
 
       chat.forEach(message => {
 
-        console.log(message.data())
+        console.log(message.data().from);
+        console.log(friend.uid);
         if(message.data().from == friend.uid)
         {
             html += `  <div class="text-left">
