@@ -270,13 +270,13 @@ async function loadMessages(snapshot)
         {
             html += `<div class="text-left">
             <p class="mb-0"><span  class="messageFriend pl-2 pr-2">${message.data().message}</span></p>
-            <small>${(message.data().time).toLocaleString()}</small>
+            <small>${(message.data().time.toDate()).toLocaleString()}</small>
          </div>`
         }
         else if(message.data().from == userD.uid){
           html += `<div class="text-right">
           <p style="margin-bottom: 0"><span class="messageUser pl-2 pr-2">${message.data().message}</span></p>
-          <small>${(message.data().time).toLocaleString()}</small>
+          <small>${(message.data().time.toDate()).toLocaleString()}</small>
       </div>`
         }     
       });
