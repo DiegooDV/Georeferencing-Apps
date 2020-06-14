@@ -252,7 +252,7 @@ async function loadMessages(snapshot)
     }
   })
 
-  await db.collection("Messages").orderBy("time", "desc").get().then((messages) => {
+  await db.collection("Messages").orderBy("time", "asc").get().then((messages) => {
 
 
 
