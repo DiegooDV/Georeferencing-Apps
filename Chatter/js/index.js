@@ -266,9 +266,9 @@ async function loadMessages(snapshot)
       let html = "";
 
       chat.forEach(message => {
-        if(message.data().from == friend.uid)
+        if(message.data().from == friend)
         {
-            html += `  <div class="text-left">
+            html += `<div class="text-left">
             <p class="mb-0"><span  class="messageFriend pl-2 pr-2">${message.data().message}</span></p>
             <small>${message.data().time}</small>
          </div>`
