@@ -253,7 +253,6 @@ async function loadMessages(snapshot)
   })
 
   await db.collection("Messages").orderBy("time", "desc").get().then((messages) => {
-    console.log(messages.docs[0].data().message);
 
 
 
@@ -262,15 +261,11 @@ async function loadMessages(snapshot)
         return (el.data().from == friend || el.data().from  == userD.uid) && (el.data().to == friend || el.data().to == userD.uid)
       });
 
-      console.log(chat);
 
       let chatHtml = document.getElementById(`chat${friend}`);
       let html = "";
 
       chat.forEach(message => {
-
-        console.log(message.data().from);
-        console.log(friend.uid);
         if(message.data().from == friend.uid)
         {
             html += `  <div class="text-left">
@@ -278,7 +273,7 @@ async function loadMessages(snapshot)
             <small>${message.data().time}</small>
          </div>`
         }
-        else if(message.data.from == userD.uid){
+        else if(message.data().from == userD.uid){
           html += `<div class="text-right">
           <p style="margin-bottom: 0"><span class="messageUser pl-2 pr-2">${message.data().message}</span></p>
           <small>${message.data().time}</small>
