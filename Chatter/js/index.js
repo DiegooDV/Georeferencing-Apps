@@ -252,7 +252,7 @@ async function loadMessages(snapshot)
     }
   })
 
-  await db.collection("Messages").get().then((messages) => {
+  await db.collection("Messages").orderBy("time", "desc").get().then((messages) => {
     console.log(messages.docs[0].data().message);
 
 
@@ -276,7 +276,7 @@ async function loadMessages(snapshot)
             <small>${message.data().time}</small>
          </div>`
         }
-        else{
+        else if(message.data.from == userD.uid){
           html += `<div class="text-right">
           <p style="margin-bottom: 0"><span class="messageUser pl-2 pr-2">${message.data().message}</span></p>
           <small>${message.data().time}</small>
