@@ -40,3 +40,22 @@ body{
   background: #ddd;
   color: black;
 }
+
+.messageUser {
+  border-radius: 25px;
+  background: lightgreen;
+}
+
+.messageFriend{
+  border-radius: 25px;
+  background: lightskyblue;
+}
+
+textarea {
+  resize: none;
+}
+
+.scrollable {
+  height:200px;
+  overflow-y: scroll;
+}

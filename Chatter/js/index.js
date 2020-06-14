@@ -201,12 +201,45 @@ function loadFriends(snapshot) {
         .doc(friendUID)
         .get()
         .then((doc) => {
-          html += `<div class="col-12 col-md-4">
-                <div class="jumbotron pt-3 pb-0 pl-0 pr-0">
-                  <h4 class="text-dark">${doc.data().name}</h4>
-                  <button class="btn btn-danger btn-block" onclick="removeFriend('${friendUID}')">Remove Friend</button>
+          db.collection("Messages").where("from", "in", [friendUID, userD.uid]).where("to", "in", [friendUID, userD.uid]).get().then((messages) => {
+ 
+
+
+            html += `<div class="col-12 col-md-4">
+            <div class="jumbotron p-0">
+              <div class="dropdown d-flex justify-content-end pr-1">
+                <a href="#" data-toggle="dropdown" ><i class="fa fa-cog"></i></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" onclick="removeFriend('${friendUID}')">Remove friend <i class="fa fa-trash"></i></a>
+                  <a class="dropdown-item" onclick="reportUser('${friendUID}')" >Report user  <i class="fa fa-exclamation-triangle"></i></a>
                 </div>
-              </div>`;
+              </div>
+              <h4 class="text-dark">${doc.data().name}</h4>
+              <div class="jumbotron m-0 pt-0 pb-2 scrollable">
+                <div class="row">
+                    <div class="text-left">
+                      <p class="mb-0"><span  class="messageFriend pl-2 pr-2">Hola tu</span></p>
+                      <small>12:00:00 AM</small>
+                   </div>
+                    <div class="text-right">
+                      <p style="margin-bottom: 0"><span class="messageUser pl-2 pr-2">Hola! como estas ewf ewfwfwefwefwefwef amigo mio jejejke espero que muy bien vale</span></p>
+                      <small>12:00:00 AM</small>
+                  </div>
+                  <div class="text-right">
+                    <p style="margin-bottom: 0"><span class="messageUser pl-2 pr-2">Hola! como estas ewf ewfwfwefwefwefwef amigo mio jejejke espero que muy bien vale</span></p>
+                    <small>12:00:00 AM</small>
+                </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <textarea class="form-control" id="txtMessage${friendUID}" rows="2"></textarea>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary" type="button" onclick="sendMessage(${friendUID})">Send</button>
+                </div>
+              </div>
+            </div>
+          </div>`;
+          })
           friendsHtml.innerHTML = html;
         });
     });
@@ -244,3 +277,6 @@ function showAccountModal()
     $('#modalAccount').modal('show')
   });
 }
+
+
+
