@@ -31,6 +31,13 @@ auth.onAuthStateChanged((user) => {
       .onSnapshot((snapshot) => {
         loadFriends(snapshot);
       });
+
+      db.collection("Messages")
+      .doc()
+      .onSnapshot((snapshot) => {
+        loadMessages(snapshot);
+      });
+      
   }
 });
 

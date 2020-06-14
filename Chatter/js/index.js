@@ -201,11 +201,7 @@ function loadFriends(snapshot) {
         .doc(friendUID)
         .get()
         .then((doc) => {
-          db.collection("Messages").where("from", "in", [friendUID, userD.uid]).where("to", "in", [friendUID, userD.uid]).get().then((messages) => {
- 
-
-
-            html += `<div class="col-12 col-md-4">
+          html += `<div class="col-12 col-md-4">
             <div class="jumbotron p-0">
               <div class="dropdown d-flex justify-content-end pr-1">
                 <a href="#" data-toggle="dropdown" ><i class="fa fa-cog"></i></a>
@@ -216,35 +212,77 @@ function loadFriends(snapshot) {
               </div>
               <h4 class="text-dark">${doc.data().name}</h4>
               <div class="jumbotron m-0 pt-0 pb-2 scrollable">
-                <div class="row">
-                    <div class="text-left">
-                      <p class="mb-0"><span  class="messageFriend pl-2 pr-2">Hola tu</span></p>
-                      <small>12:00:00 AM</small>
-                   </div>
-                    <div class="text-right">
-                      <p style="margin-bottom: 0"><span class="messageUser pl-2 pr-2">Hola! como estas ewf ewfwfwefwefwefwef amigo mio jejejke espero que muy bien vale</span></p>
-                      <small>12:00:00 AM</small>
-                  </div>
-                  <div class="text-right">
-                    <p style="margin-bottom: 0"><span class="messageUser pl-2 pr-2">Hola! como estas ewf ewfwfwefwefwefwef amigo mio jejejke espero que muy bien vale</span></p>
-                    <small>12:00:00 AM</small>
-                </div>
+                <div class="row" id="chat${friendUID}">
+
                 </div>
               </div>
               <div class="input-group mb-3">
-                <textarea class="form-control" id="txtMessage${friendUID}" rows="2"></textarea>
+                <textarea class="form-control" id="txtMessage${friendUID}" rows="2" required></textarea>
                 <div class="input-group-append">
                   <button class="btn btn-outline-primary" type="button" onclick="sendMessage(${friendUID})">Send</button>
                 </div>
               </div>
             </div>
           </div>`;
-          })
           friendsHtml.innerHTML = html;
         });
     });
   }
   friendsHtml.innerHTML = html;
+
+  loadMessages();
+}
+
+async function loadMessages(snapshot)
+{
+  let friends = [];
+
+  await db.collection("Users")
+  .doc(userD.uid)
+  .get().then((doc) => {
+
+    if(doc.data().friends === undefined)
+    {
+      db.collection("Users").doc(userD.uid).update({
+        friends: [],
+      });
+    }
+    else{
+      friends = doc.data().friends;
+    }
+  })
+
+  await db.collection("Messages").orderBy("date", Query.Direction.DESCENDING).get().then((messages) => {
+    friends.forEach(friend => {
+      let chat = messages.filter(function (el) {
+        return (el.from == friend || el.from == userD.uid) && (el.to == friend || el.to == userD.uid)
+      });
+
+      let chatHtml = document.getElementById(`chat${friend}`);
+      let html = "";
+
+      chat.forEach(message => {
+
+        if(message.from == friend.uid)
+        {
+            html += `  <div class="text-left">
+            <p class="mb-0"><span  class="messageFriend pl-2 pr-2">${message.message}</span></p>
+            <small>${message.time}</small>
+         </div>`
+        }
+        else{
+          html += `<div class="text-right">
+          <p style="margin-bottom: 0"><span class="messageUser pl-2 pr-2">${message.message}</span></p>
+          <small>${message.time}</small>
+      </div>`
+        }     
+      });
+
+      chatHtml.innerHTML = html;
+
+
+    });
+  });
 }
 
 function showFindButton(status)
@@ -276,6 +314,12 @@ function showAccountModal()
   
     $('#modalAccount').modal('show')
   });
+}
+
+function sendMessage(friendUID)
+{
+  let text = document.getElementById(`txtMessage${friendUID}`);
+  
 }
 
 
