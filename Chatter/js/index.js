@@ -233,8 +233,9 @@ function loadFriends(snapshot) {
   loadMessages();
 }
 
-async function loadMessages()
+async function loadMessages(snapshot)
 {
+  console.log(snapshot);
   let friends = [];
 
   await db.collection("Users")
@@ -252,10 +253,8 @@ async function loadMessages()
     }
   })
 
-  await db.collection("Messages").orderBy("time", "asc").get().then((messages) => {
-
     friends.forEach(friend => {
-      let chat = messages.docs.filter(function (el) {
+      let chat = snapshot.docs.filter(function (el) {
         return (el.data().from == friend || el.data().from  == userD.uid) && (el.data().to == friend || el.data().to == userD.uid)
       });
 
@@ -281,7 +280,6 @@ async function loadMessages()
       });
 
       chatHtml.innerHTML = html;
-    });
   });
 }
 

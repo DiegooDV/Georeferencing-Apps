@@ -32,10 +32,9 @@ auth.onAuthStateChanged((user) => {
         loadFriends(snapshot);
       });
 
-      db.collection("Messages")
-      .doc()
+      db.collection("Messages").orderBy("time", "asc").doc()
       .onSnapshot((snapshot) => {
-        loadMessages();
+        loadMessages(snapshot);
       });
       
   }
