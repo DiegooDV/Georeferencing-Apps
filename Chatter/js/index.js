@@ -11,7 +11,7 @@ var coordinates = {
 var properties = {
   center: coordinates,
   zoom: 3,
-  maxZoom: 8,
+  maxZoom: 9,
   minZoom: 3,
 };
 $("#btnStart").click(function () {
