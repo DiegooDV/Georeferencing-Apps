@@ -235,7 +235,6 @@ function loadFriends(snapshot) {
 
 async function loadMessages(snapshot)
 {
-  console.log(snapshot);
   let friends = [];
 
   await db.collection("Users")
