@@ -183,7 +183,6 @@ function clearOverlays() {
 }
 
 function loadFriends(snapshot) {
-
   let friends = [];
   if (snapshot.data().friends === undefined) {
     db.collection("Users").doc(userD.uid).update({
@@ -230,12 +229,12 @@ function loadFriends(snapshot) {
     });
   }
   friendsHtml.innerHTML = html;
+
+  loadMessages();
 }
 
-async function loadMessages(snapshot)
+async function loadMessages()
 {
-  var messages = snapshot.docs;
-  console.log(messages);
   let friends = [];
 
   await db.collection("Users")
@@ -253,13 +252,16 @@ async function loadMessages(snapshot)
     }
   })
 
+  await db.collection("Messages").orderBy("time", "asc").get().then((messages) => {
+
     friends.forEach(friend => {
-      let chat = snapshot.docs.filter(function (el) {
+      let chat = messages.docs.filter(function (el) {
         return (el.data().from == friend || el.data().from  == userD.uid) && (el.data().to == friend || el.data().to == userD.uid)
       });
 
 
       let chatHtml = document.getElementById(`chat${friend}`);
+      chatHtml.innerHTML = html;
       let html = "";
 
       chat.forEach(message => {
@@ -279,6 +281,7 @@ async function loadMessages(snapshot)
       });
 
       chatHtml.innerHTML = html;
+    });
   });
 }
 
