@@ -229,12 +229,11 @@ function loadFriends(snapshot) {
     });
   }
   friendsHtml.innerHTML = html;
-
-  loadMessages();
 }
 
 async function loadMessages()
 {
+  
   let friends = [];
 
   await db.collection("Users")

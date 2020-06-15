@@ -33,7 +33,9 @@ auth.onAuthStateChanged((user) => {
       });
 
       db.collection("Messages").orderBy("time", "asc").onSnapshot((snapshot) => {
-        loadMessages();
+        setTimeout(function(){
+          loadMessages();
+        },1000)
       });
       
   }
