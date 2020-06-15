@@ -183,6 +183,9 @@ function clearOverlays() {
 }
 
 function loadFriends(snapshot) {
+  console.log(snapshot);
+  console.log(snapshot.docs);
+  console.log(snapshot.doc);
   let friends = [];
   if (snapshot.data().friends === undefined) {
     db.collection("Users").doc(userD.uid).update({
@@ -259,8 +262,8 @@ async function loadMessages(snapshot)
 
 
       let chatHtml = document.getElementById(`chat${friend}`);
-      chatHtml.innerHTML = html;
       let html = "";
+      chatHtml.innerHTML = html;
 
       chat.forEach(message => {
         if(message.data().from == friend)
