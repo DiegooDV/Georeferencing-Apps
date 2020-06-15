@@ -365,7 +365,7 @@ function sendMessage(friendUID)
     to: friendUID,
     from: userD.uid,
     message: text,
-    time: Date.now()
+    time: firebase.firestore.FieldValue.serverTimestamp()
   });
 
   document.getElementById(`txtMessage${friendUID}`).value = "";
