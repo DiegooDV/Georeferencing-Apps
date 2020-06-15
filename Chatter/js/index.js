@@ -203,12 +203,16 @@ function reportUser(uid)
       db.collection("Reports")
       .doc()
       .set({
-        userUID: firebase.firestore.FieldValue.arrayRemove(uid),
+        userUID: uid,
         reason: document.getElementById("txtReasonReport").value
       });
 
+      Swal.fire('User reported','','success');
+
+
     clearOverlays();
     }
+
   }) 
 }
 
