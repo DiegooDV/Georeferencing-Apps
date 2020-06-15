@@ -266,7 +266,9 @@ function loadFriends(snapshot) {
     });
   }
   friendsHtml.innerHTML = html;
-  loadMessages();
+  setTimeout(function(){
+    loadMessages();
+  },1000)
 }
 
 async function loadMessages()
