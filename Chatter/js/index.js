@@ -230,8 +230,6 @@ function loadFriends(snapshot) {
     });
   }
   friendsHtml.innerHTML = html;
-
-  loadMessages();
 }
 
 async function loadMessages(snapshot)
