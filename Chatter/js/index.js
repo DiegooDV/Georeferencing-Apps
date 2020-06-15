@@ -51,6 +51,9 @@ function movePosition() {
           coordinates: { latitude: pos.lat, longitude: pos.lng },
           active: true
         });
+    }, (error) => {
+      Swal.fire("No location provided", error, "error");
+
     });
   } else {
     Swal.fire("No location provided", "", "info");
