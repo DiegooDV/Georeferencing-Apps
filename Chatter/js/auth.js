@@ -35,7 +35,7 @@ auth.onAuthStateChanged((user) => {
       db.collection("Messages")
       .doc()
       .onSnapshot((snapshot) => {
-        loadMessages(snapshot);
+        loadMessages();
       });
       
   }

@@ -233,7 +233,7 @@ function loadFriends(snapshot) {
   loadMessages();
 }
 
-async function loadMessages(snapshot)
+async function loadMessages()
 {
   let friends = [];
 
@@ -254,8 +254,6 @@ async function loadMessages(snapshot)
 
   await db.collection("Messages").orderBy("time", "asc").get().then((messages) => {
 
-
-
     friends.forEach(friend => {
       let chat = messages.docs.filter(function (el) {
         return (el.data().from == friend || el.data().from  == userD.uid) && (el.data().to == friend || el.data().to == userD.uid)
@@ -263,6 +261,7 @@ async function loadMessages(snapshot)
 
 
       let chatHtml = document.getElementById(`chat${friend}`);
+      chatHtml.innerHTML = html;
       let html = "";
 
       chat.forEach(message => {
@@ -282,8 +281,6 @@ async function loadMessages(snapshot)
       });
 
       chatHtml.innerHTML = html;
-
-
     });
   });
 }
