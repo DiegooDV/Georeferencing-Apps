@@ -206,10 +206,7 @@ function reportUser(uid)
         userUID: uid,
         reason: document.getElementById("txtReasonReport").value
       });
-
       Swal.fire('User reported','','success');
-
-
     clearOverlays();
     }
 
@@ -360,7 +357,16 @@ function showAccountModal()
 
 function sendMessage(friendUID)
 {
-  let text = document.getElementById(`txtMessage${friendUID}`);
+  let text = document.getElementById(`txtMessage${friendUID}`).value;
+
+  db.collection("Reports")
+  .doc()
+  .set({
+    to: friendUID,
+    from: userD.uid,
+    message: text,
+    time: Date.now()
+  });
   
 }
 
