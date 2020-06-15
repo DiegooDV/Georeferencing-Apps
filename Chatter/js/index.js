@@ -261,7 +261,6 @@ async function loadMessages()
 
 
       let chatHtml = document.getElementById(`chat${friend}`);
-      chatHtml.innerHTML = html;
       let html = "";
 
       chat.forEach(message => {
