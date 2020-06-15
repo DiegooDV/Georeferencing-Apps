@@ -236,9 +236,8 @@ function loadFriends(snapshot) {
 
 async function loadMessages(snapshot)
 {
-  console.log(snapshot);
-  console.log(snapshot.docs);
-  console.log(snapshot.doc);
+  var messages = snapshot.docs;
+  console.log(messages);
   let friends = [];
 
   await db.collection("Users")
