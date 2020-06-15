@@ -257,7 +257,7 @@ function loadFriends(snapshot) {
               <div class="input-group mb-3">
                 <textarea class="form-control" id="txtMessage${friendUID}" rows="2" required></textarea>
                 <div class="input-group-append">
-                  <button class="btn btn-outline-primary" type="button" onclick="sendMessage(${friendUID})">Send</button>
+                  <button class="btn btn-outline-primary" type="button" onclick="sendMessage('${friendUID}')">Send</button>
                 </div>
               </div>
             </div>
