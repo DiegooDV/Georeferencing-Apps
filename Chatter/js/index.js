@@ -167,12 +167,49 @@ function addFriend(uid) {
 }
 
 function removeFriend(uid) {
-  db.collection("Users")
-    .doc(userD.uid)
-    .update({
-      friends: firebase.firestore.FieldValue.arrayRemove(uid),
-    });
-  clearOverlays();
+
+  Swal.fire({
+    title: 'Remove Friend?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.value) {
+      db.collection("Users")
+      .doc(userD.uid)
+      .update({
+        friends: firebase.firestore.FieldValue.arrayRemove(uid),
+      });
+    clearOverlays();
+    }
+  }) 
+}
+
+function reportUser(uid)
+{
+  Swal.fire({
+    title: 'Report User?',
+    html: "<input type+'text' placeholder='Reason' id='txtReasonReport'>",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.value) {
+
+      db.collection("Reports")
+      .doc()
+      .set({
+        userUID: firebase.firestore.FieldValue.arrayRemove(uid),
+        reason: document.getElementById("txtReasonReport").value
+      });
+
+    clearOverlays();
+    }
+  }) 
 }
 
 function clearOverlays() {
