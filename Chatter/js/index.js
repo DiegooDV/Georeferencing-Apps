@@ -368,7 +368,7 @@ function sendMessage(friendUID)
     time: Date.now()
   });
 
-  let text = document.getElementById(`txtMessage${friendUID}`).value = "";
+  document.getElementById(`txtMessage${friendUID}`).value = "";
 
 }
 
