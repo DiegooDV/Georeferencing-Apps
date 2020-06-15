@@ -359,7 +359,7 @@ function sendMessage(friendUID)
 {
   let text = document.getElementById(`txtMessage${friendUID}`).value;
 
-  db.collection("Reports")
+  db.collection("Messages")
   .doc()
   .set({
     to: friendUID,
@@ -367,7 +367,9 @@ function sendMessage(friendUID)
     message: text,
     time: Date.now()
   });
-  
+
+  let text = document.getElementById(`txtMessage${friendUID}`).value = "";
+
 }
 
 
