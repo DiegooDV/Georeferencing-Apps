@@ -45,7 +45,6 @@ function movePosition() {
         clickable: false,
       });
 
-      map.panTo(new google.maps.LatLng(pos.lat, pos.lng));
       db.collection("Users")
         .doc(userD.uid)
         .update({
@@ -322,6 +321,9 @@ async function loadMessages()
       chatHtml.innerHTML = html;
     });
   });
+
+  $(".scrollable").scrollTop($(".scrollable")[0].scrollHeight);
+
 }
 
 function showFindButton(status)
