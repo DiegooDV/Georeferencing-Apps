@@ -1,2 +1,2 @@
 # Georeferencing-Apps
-Different examples about georeferencing
+Different examples about georeferencing using Google Maps API
